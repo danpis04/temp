@@ -159,6 +159,17 @@ PY
   echo "model: $MODEL ($MODEL_WHY)" >&2
 
   PROMPT="$(cat CYCLE.md)"
+  # A 22KB procedure file is sometimes read as *background context* rather than
+  # as the instruction: the session answers "I don't see a specific request
+  # yet" and the tick does nothing while exiting 0 (2026-09-26, ~half the
+  # ticks, LIGHT and FULL alike). One imperative line in front of the same
+  # document removes the ambiguity; CYCLE.md itself is untouched. The runner
+  # also verifies the tick really happened (phil-cycle.sh) — belt and braces.
+  PROMPT="You are being invoked as the trading agent right now. The message
+below IS your instruction: execute that procedure exactly once, then stop. Do
+not treat it as background context and do not ask what you should do.
+
+$PROMPT"
   # A silently empty prompt is a real failure mode (an empty `-p` makes the
   # session ask what to do instead of cycling); the size printed here is what
   # tells the difference between "prompt read" and "prompt lost".
