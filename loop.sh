@@ -204,6 +204,12 @@ $TRIGGER_JSON
        --allowedTools "Read" "Glob" "Grep" "WebSearch" "WebFetch"
          "Edit" "Write" "Task"
          "Bash(python3 core/*)"
+         # CYCLE.md steps 0 and 9 branch on PHIL_LEASE / PHIL_PUSH_BY_LOOP being
+         # set in the environment, and the cycle logs record what it saw. With
+         # env introspection denied the session cannot tell it is on the
+         # operator machine, falls into step 9's push path and loops on a
+         # `git push` the runner deliberately does not grant (2026-09-26).
+         "Bash(env:*)" "Bash(printenv:*)" "Bash(echo:*)"
          # The agent's own tooling (playbook §live book) and the one raw CLOB
          # read it documents: without these the cycle's tools are unusable
          # headless and every quote/benchmark step is denied.
