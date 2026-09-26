@@ -159,6 +159,10 @@ PY
   echo "model: $MODEL ($MODEL_WHY)" >&2
 
   PROMPT="$(cat CYCLE.md)"
+  # A silently empty prompt is a real failure mode (an empty `-p` makes the
+  # session ask what to do instead of cycling); the size printed here is what
+  # tells the difference between "prompt read" and "prompt lost".
+  echo "prompt: ${#PROMPT} bytes from $(pwd)/CYCLE.md" >&2
   # Triggered ticks carry the watch verdict into the prompt: CYCLE.md keys the
   # tick type (and steps 0, 0b and 4) off it.
   if [ -n "$TRIGGER_JSON" ]; then
