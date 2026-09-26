@@ -25,9 +25,19 @@ if [ -z "${PEARL_CONNECT_STORE:-}" ]; then
 fi
 
 REAL_MODE=0
+TRIGGER_JSON=""
 ARGS=()
 for a in "$@"; do
-  [ "$a" = "--real" ] && REAL_MODE=1 || ARGS+=("$a")
+  case "$a" in
+    --real) REAL_MODE=1 ;;
+    # --triggered=<verdict>: a TRIGGERED tick fired by the watch routine.
+    # The verdict (core/watch.py check's JSON) rides in the prompt — that is
+    # what tells CYCLE.md the tick type. Per CYCLE.md step 0 a TRIGGERED
+    # invocation neither takes nor honours the runner lease, so PHIL_LEASE
+    # stays unset here on purpose.
+    --triggered=*) TRIGGER_JSON="${a#--triggered=}" ;;
+    *) ARGS+=("$a") ;;
+  esac
 done
 CYCLES="${ARGS[0]:-1}"
 SLEEP_MIN="${ARGS[1]:-45}"
@@ -89,7 +99,12 @@ for i in $(seq 1 "$CYCLES"); do
   # reaches CYCLE.md step 0 through PHIL_LEASE; a LIGHT tick still settles
   # and monitors, it just does not scan or research.
   PHIL_LEASE=acquired
-  if PHIL_PUSH_BY_LOOP=1 python3 core/lease.py acquire >/dev/null; then
+  if [ -n "$TRIGGER_JSON" ]; then
+    # A TRIGGERED tick neither takes nor honours the lease (CYCLE.md step 0);
+    # leaving PHIL_LEASE unset is what tells the cycle agent not to touch it.
+    PHIL_LEASE=""
+    echo "triggered tick: runner lease neither taken nor honoured" >&2
+  elif PHIL_PUSH_BY_LOOP=1 python3 core/lease.py acquire >/dev/null; then
     :
   elif [ "$?" -eq 3 ]; then
     echo "runner lease held by the other runner — this cycle runs as a LIGHT tick" >&2
@@ -108,7 +123,9 @@ for i in $(seq 1 "$CYCLES"); do
   # would flip it, and the error would go the wrong way.
   MODEL=claude-opus-5-5
   MODEL_WHY="tick may run FULL"
-  if [ "$PHIL_LEASE" = "held-by-other" ]; then
+  if [ -n "$TRIGGER_JSON" ]; then
+    MODEL_WHY="TRIGGERED tick: research on the trigger's candidate set"
+  elif [ "$PHIL_LEASE" = "held-by-other" ]; then
     MODEL=claude-sonnet-5
     MODEL_WHY="LIGHT tick: lease held by the other runner"
   elif python3 - <<'PY'
@@ -142,6 +159,22 @@ PY
   echo "model: $MODEL ($MODEL_WHY)" >&2
 
   PROMPT="$(cat CYCLE.md)"
+  # Triggered ticks carry the watch verdict into the prompt: CYCLE.md keys the
+  # tick type (and steps 0, 0b and 4) off it.
+  if [ -n "$TRIGGER_JSON" ]; then
+    PROMPT="$PROMPT
+
+## This invocation is a TRIGGERED tick
+
+\`core/watch.py check\` reported this verdict in this session — the tick type,
+step 0, step 0b and step 4 all key off it. \`PHIL_LEASE\` is unset on purpose:
+a TRIGGERED tick neither takes nor honours the runner lease.
+
+\`\`\`json
+$TRIGGER_JSON
+\`\`\`
+"
+  fi
   if [ "$REAL_MODE" -eq 1 ]; then
     if [ "$PEARL_UP" -eq 1 ] \
        && python3 core/real.py doctor 2>/dev/null | grep -q '"ready": true'; then
@@ -156,10 +189,27 @@ PY
   # step 9 and its rebase path mandate exactly these commands, and a
   # permission-blocked "checkout -B" strands the cycle's commits on a
   # detached HEAD (2026-08-28).
+  # Live session log: stream-json emits every tool call, edit and message as it
+  # happens, so the operator dashboard can show a cycle in flight. The log
+  # lives OUTSIDE the checkout on purpose — `git add -A` in step 8 must never
+  # be able to commit a raw transcript.
+  PHIL_LOG_DIR="${PHIL_LOG_DIR:-$HOME/phil-logs}"
+  mkdir -p "$PHIL_LOG_DIR"
+  CYCLE_LOG="$PHIL_LOG_DIR/cycle-$(date -u +%Y%m%dT%H%M%SZ)-$i.jsonl"
+  ln -sfn "$CYCLE_LOG" "$PHIL_LOG_DIR/current.jsonl"
+  echo "cycle log: $CYCLE_LOG" >&2
+
   CMD=(claude -p "$PROMPT" --model "$MODEL"
+       --output-format stream-json --verbose
        --allowedTools "Read" "Glob" "Grep" "WebSearch" "WebFetch"
          "Edit" "Write" "Task"
-         "Bash(python3 core/*)" "Bash(git add:*)" "Bash(git commit:*)"
+         "Bash(python3 core/*)"
+         # The agent's own tooling (playbook §live book) and the one raw CLOB
+         # read it documents: without these the cycle's tools are unusable
+         # headless and every quote/benchmark step is denied.
+         "Bash(python3 strategy/tools/*)"
+         "Bash(curl -s https://clob.polymarket.com/*)"
+         "Bash(git add:*)" "Bash(git commit:*)" "Bash(git branch:*)"
          "Bash(git rev-parse:*)" "Bash(git log:*)" "Bash(git diff:*)"
          "Bash(git status:*)" "Bash(git symbolic-ref:*)"
          "Bash(git merge-base:*)" "Bash(git rev-list:*)"
@@ -186,9 +236,13 @@ PY
   # stray credential lookup fail fast instead of hanging on a keyring prompt
   # no headless session can answer; GIT_EDITOR stops `git rebase --continue`
   # from opening an editor and blocking forever.
-  PHIL_PUSH_BY_LOOP=1 PHIL_LEASE="$PHIL_LEASE" \
-  GIT_TERMINAL_PROMPT=0 GIT_ASKPASS=/usr/bin/true GIT_EDITOR=true \
-    "${CMD[@]}" || echo "cycle $i failed; continuing"
+  # PHIL_LEASE is passed only when this tick actually touched the lease: a
+  # TRIGGERED tick leaves it unset (see the lease block above).
+  ENVS=(PHIL_PUSH_BY_LOOP=1 PHIL_CYCLE_LOG="$CYCLE_LOG"
+        GIT_TERMINAL_PROMPT=0 GIT_ASKPASS=/usr/bin/true GIT_EDITOR=true)
+  [ -n "$PHIL_LEASE" ] && ENVS+=(PHIL_LEASE="$PHIL_LEASE")
+  env "${ENVS[@]}" "${CMD[@]}" 2>&1 | tee "$CYCLE_LOG" \
+    || echo "cycle $i failed; continuing"
 
   # Enforce the protected boundary: revert any agent edits to core/config.
   PROTECTED_PATHS=(core/ config/ .github/ CYCLE.md REAL.md loop.sh CLAUDE.md LICENSE README.md .gitignore)
