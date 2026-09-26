@@ -4605,6 +4605,56 @@ gate; the hand table is the narrative index. An operator proposal to
 make `reconcile` units-aware and to extend its B-check beyond
 outside-view-veto is filed in journal/proposals.md (2026-09-23 pass).
 
+**2026-09-26 21:1xZ update (LIGHT tick, operator machine; gap-remediation —
+see RETRO-20260926-2114 for the full account of how this fell through: a
+19:16Z LIGHT tick and the 20:25Z FULL cycle both settled MrBeast wk1
+views forecasts without grading them, and an older Yabloko row was graded
+narratively in RETRO-20260925-1105 but never table-entered). 2
+`outside-view-veto` rows this batch plus 1 backfilled row; a paired 2
+`wide-spread-veto` rows are entered in the next update below.**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| Yabloko >=1 seat (`56ed434261a5`, backfill, settled 2026-09-25, graded RETRO-20260925-1105) | 0.10 / 0.235 | No | +0.115 | No | +1.35 |
+| MrBeast 60-70M (`92a9d80fc3c3`) | 0.59 / 0.3835 | Yes | +0.180 | No | -5.00 |
+| MrBeast 70-80M (`8adb0a184d87`) | 0.40 / 0.625 | No | +0.210 | Yes | -5.00 |
+
+Net this batch: **-$8.65** (1W/2L). Mechanical ledger now 175 rows / 167
+trades / 8 refused / 71W-96L / +$77.41 / dBrier +0.0332 / held-out
++$71.52 (was 172/164/70W-94L/+$86.08/+0.0316/+$80.20). Side split: no 123
+rows/115 trd/53W-62L/+$38.21 (adds Yabloko's win and MrBeast 70-80M's
+loss); yes 52 rows/52 trd/18W-34L/+$39.20 (adds MrBeast 60-70M's loss).
+Check: 38.21 + 39.20 = 77.41 ✓.
+
+Ruling: no boundary change. Both MrBeast legs would have lost as
+hypothetical trades — the veto did its job. See RETRO-20260926-2114 for
+the full 8-row MrBeast chain (both brackets, all 4 snapshots each): every
+single snapshot on both brackets was worse-calibrated than the market
+mid, a clean but single-event (n=1 video) directional miss, not yet a
+policy change.
+
+**2026-09-26 21:1xZ update (same tick as above; 2 `wide-spread-veto` rows
+from the same MrBeast chain, later snapshots on the same two brackets).**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| MrBeast 60-70M (`d842a0332a5a`) | 0.18 / 0.094 | Yes | +0.045 | No | -5.00 |
+| MrBeast 70-80M (`5badc7031d2c`) | 0.82 / 0.9045 | No | +0.040 | Yes | -5.00 |
+
+Net this batch: **-$10.00** (0W/2L), plus a same-chain refusal
+(`f7fcd3a05a31`, unrelated market — Sep25 earthquake, no ask at record
+time, contributes a settled row but no trade; graded in
+RETRO-20260926-2114). Mechanical ledger now 23 rows / 20 trades / 3
+refused / 11W-9L / -$25.04 / dBrier -0.0444 / held-out -$17.22 (was
+20/18/1 refused/11W-7L/-$15.04/-0.0330/-$12.22). Side split: yes 10
+rows/9 trd/6W-3L/-$5.25 (adds this batch's 0W/1L); no 13 rows/11
+trd/5W-6L/-$19.79 (adds this batch's 0W/1L). Check: -5.25 + -19.79 =
+-25.04 ✓.
+
+Ruling: no boundary change. Same direction as the outside-view-veto pair
+above (later, tighter-edge snapshots of the same two brackets) — both
+would have lost too. 4 for 4 across the whole chain's veto'd snapshots.
+
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
 The veto on judgment estimates with claimed edge > 0.10 stays. This fork
