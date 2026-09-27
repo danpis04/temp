@@ -26,10 +26,15 @@ fi
 
 REAL_MODE=0
 TRIGGER_JSON=""
+PROCEDURE=""
 ARGS=()
 for a in "$@"; do
   case "$a" in
     --real) REAL_MODE=1 ;;
+    # --procedure=<file>: run a DIFFERENT procedure than CYCLE.md through the
+    # same machinery (lock, lease, sync, protected revert, push, live log).
+    # The daily deep retro uses it: same runner, its own instruction file.
+    --procedure=*) PROCEDURE="${a#--procedure=}" ;;
     # --triggered=<verdict>: a TRIGGERED tick fired by the watch routine.
     # The verdict (core/watch.py check's JSON) rides in the prompt — that is
     # what tells CYCLE.md the tick type. Per CYCLE.md step 0 a TRIGGERED
@@ -123,7 +128,9 @@ for i in $(seq 1 "$CYCLES"); do
   # would flip it, and the error would go the wrong way.
   MODEL=claude-opus-5-5
   MODEL_WHY="tick may run FULL"
-  if [ -n "$TRIGGER_JSON" ]; then
+  if [ -n "$PROCEDURE" ]; then
+    MODEL_WHY="deep retro: daily audit of the window (Opus)"
+  elif [ -n "$TRIGGER_JSON" ]; then
     MODEL_WHY="TRIGGERED tick: research on the trigger's candidate set"
   elif [ "$PHIL_LEASE" = "held-by-other" ]; then
     MODEL=claude-sonnet-5
@@ -158,6 +165,13 @@ PY
   fi
   echo "model: $MODEL ($MODEL_WHY)" >&2
 
+  if [ -n "$PROCEDURE" ]; then
+    # A different procedure (the daily deep retro): its own file is the whole
+    # instruction, so it carries its own opening imperative. No trigger block,
+    # no CYCLE.md — the same runner, a different job.
+    PROMPT="$(cat "$PROCEDURE")"
+    echo "prompt: ${#PROMPT} bytes from $PROCEDURE" >&2
+  else
   PROMPT="$(cat CYCLE.md)"
   # A 22KB procedure file is sometimes read as *background context* rather than
   # as the instruction: the session answers "I don't see a specific request
@@ -189,6 +203,7 @@ a TRIGGERED tick neither takes nor honours the runner lease.
 $TRIGGER_JSON
 \`\`\`
 "
+  fi
   fi
   if [ "$REAL_MODE" -eq 1 ]; then
     if [ "$PEARL_UP" -eq 1 ] \
