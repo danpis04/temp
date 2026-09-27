@@ -30,11 +30,23 @@ def sh(*args):
 
 
 def repo_slug():
-    url = sh("git", "remote", "get-url", "origin")
-    m = re.search(r"github\.com[:/]([^/]+)/([^/.]+?)(?:\.git)?$", url)
-    if not m:
-        raise ValueError(f"cannot parse a GitHub slug from remote {url!r}")
-    return f"{m.group(1)}/{m.group(2)}"
+    """Owner/repo of the GitHub repo whose CI verdict we want.
+
+    origin first. On the operator runner origin is a local bare mirror (kept
+    that way so the lease ref and this repo's push discipline stay local), so
+    fall back to the `github` remote, which is where CI actually runs.
+    OPERATOR PATCH 2026-09-27: without the fallback every operator cycle logged
+    "CI: unknown" and step 0c was blind on that runner.
+    """
+    for remote in ("origin", "github"):
+        try:
+            url = sh("git", "remote", "get-url", remote)
+        except subprocess.CalledProcessError:
+            continue
+        m = re.search(r"github\.com[:/]([^/]+)/([^/.]+?)(?:\.git)?$", url)
+        if m:
+            return f"{m.group(1)}/{m.group(2)}"
+    raise ValueError("no GitHub remote found (origin, github)")
 
 
 def check_runs(slug, sha):
