@@ -4823,6 +4823,19 @@ not hold one day later). (2) holds: tool fold pnl [+5.90, −1.99, +39.93,
 −$5.95/−$17.16, so the No-side "nothing announced" candidate shape named
 below is currently the weaker side, not the stronger one.
 
+Status 2026-09-27 (DEEP): **NOT MET, 12th consecutive. Gate 2 fails
+again.** Slice 175 rows / 167 CF trades / 118 events / 71W-96L /
++$77.41 / overall dBrier +0.0332 (adds MrBeast 60-70M `92a9d80fc3c3`
+−$5.00 and 70-80M `8adb0a184d87` −$5.00, backfilled in
+RETRO-20260926-2114; tool output, held-out +$71.52). (2) fails: tool fold
+pnl [+5.90, −1.99, +39.93, +36.92, **−3.34**]. (3) holds: 118 events.
+(1) was NOT recomputed today. The per-fold dBrier recipe needs an
+inline script, and this runner requires approval for that. It cannot
+change the verdict: gate 2 fails on the tool's own numbers, and the two
+added rows (dBrier +0.201 and +0.219) both land in f4, which was already
+positive at +0.0363. No-side f3/f4 CF pnl is −$5.95/−$22.16, weaker
+again.
+
 If the bar is ever MET: do not loosen the veto wholesale. Propose a
 NARROW carve-out for the best-evidenced sub-class only (current
 candidate shape: No-side timeline theses of the "nothing announced"
@@ -6552,6 +6565,28 @@ official-figure centring rule for turnout/seat counts (RETRO-20260925-
 The next deep retro to see ≥ 8 independent events re-grades this rule. If
 shades are winning by then, relax it. This changes recording, not bet
 eligibility: every existing gate still decides whether a row can bet.
+
+**DEEP-2026-09-27 sharpening (scope and eligibility). Breach on record:
+Krakow Gibala No `2215a01819ef`, placed about 16h after this rule
+landed.** The transfer model read P(Gibala) about 0.82, and the note
+then says "shaded to 0.80 for the 6pt one-week slide". That is a
+momentum shade, and it was recorded as est_prob. The raw read gives No
+0.18 against a 0.15 fill, an edge of 0.03, under min_edge. The shade
+alone turned a non-bet into a bet. Two clarifications follow:
+
+1. **"Named mechanical read" includes self-built poll models:** poll
+   averages, vote-transfer or runoff-transfer models, and seat
+   projections. The table above only listed market-data tools, and the
+   first breach came from the class it did not name.
+2. **Eligibility is computed on the unshaded read.** Every floor
+   (min_edge, the 0.10 veto boundary, the price-inside-the-model-range
+   rule, the centre stress test) is applied to the mechanical number. If
+   a row clears a floor only after a shade that is not a measured print,
+   it is forecast-only, and its skip_reason names the floor it failed.
+
+The bet stands; the ledger is append-only. Its settling retro adds a
+tally row here (raw No 0.18 vs shaded No 0.20) and grades it as a
+breach whatever the outcome (schedule.json Krakow watch item).
 
 ## DEEP-2026-09-16: position-holding re-check bias, pre-registered as a graded pattern
 

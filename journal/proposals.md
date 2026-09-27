@@ -3524,3 +3524,45 @@ regexes, subclass auto-tagger.
 gate 1 fails, f4 dBrier +0.0363). 0 bets placed, 3 settled WON (+$4.43),
 4 open. No reverts; one consolidation rule (unmeasured shades) and a
 research-allocation re-rank capping social-media-postcount.
+
+## 2026-09-27 — deep-retro status pass
+
+Full detail in journal/retros/DEEP-2026-09-27.md.
+
+Hourly-agent proposals this window: none new.
+
+- **Mech + Pearl Connect (ENDORSED, operator act, carried):** every
+  operator FULL still logs "no pearl-connect mech tools". About 75h
+  without a mech attempt, the R1 sample was missed 4 days running, and
+  no real twins are possible.
+- **Funnel-weld CI (PROPOSED, re-urged):** 3 new missing rows (09-26
+  20:25Z, 22:35Z, 23:25Z, operator runner), backfilled by the deep
+  retro. reconcile check 3 validates rows that exist and cannot see a
+  missing row. The CI check should count cycles.log FULL entries
+  (marker `(FULL`) against funnel.jsonl rows.
+- **ODDS_API_KEY on the operator runner (PROPOSED, priority raised):**
+  with only the operator runner ticking, the devig channel is closed. 4
+  of the 6 FULLs on 09-27 logged soccer or cricket escalations as
+  unreachable for lack of the key.
+- **NEW, informational: cloud runner silent since 2026-09-26 18:17Z**
+  (about 22h at retro time). If this is intentional, it costs the odds
+  key and CI status; if not, check the cloud routine.
+  Status: INFORMATIONAL.
+- **NEW, informational: `core/ci.py` returns "unknown" on the operator
+  runner** because it cannot parse a GitHub slug from the local-path
+  origin. Step 0's CI check is blind there. Status: PROPOSED (operator,
+  protected file).
+
+Carried unchanged: screener quota vs two runners, counterfactual.py
+per-fold dBrier column (not computable by hand today: inline scripts
+need approval on the operator runner), real-twin allowed-classes,
+settled_ts determinism, wire-nonce 401, mech delivery-size, lease
+writability, screener quota refund, watch.py shape regexes, subclass
+auto-tagger.
+
+**Status:** relaxation fork NOT MET (12th consecutive; gate 2 fails, f4
+CF pnl −$3.34). 1 bet placed (Krakow `2215a01819ef`, graded as a breach
+of the shade and price-inside-range rules), 0 settled, 5 open. No
+reverts; shade rule and screener reserve sharpened, count command v5, 3
+funnel rows backfilled, 4 watch items archived, Russian joint verdict
+delivered.
