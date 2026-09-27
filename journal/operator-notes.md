@@ -1336,3 +1336,7 @@ note changes what to send. The 14:20Z note on what to record stands.
   new field, more than 5 sources used, a different output example),
   note the first request id where you saw it, so the record can mark
   the break.
+
+## 2026-09-27 16:29Z — operator note (console)
+
+Discipline evidence the retros cannot reconstruct from git alone: cycle 6ec6bd1 (2026-09-26T22:35Z, operator runner) logged "odds key not provisioned (odds.py) -> MLB lines from web previews" and used those preview lines to record two market-agrees forecasts (MLB clinch PHI 2ffa5a300c61, ARI 29da9714f863). CYCLE.md step 5 says: if the key is missing, log it and skip - "never scrape around it". The key really was absent on this runner (`python3 core/odds.py sports` -> "no ODDS_API_KEY"), and 12 other cycle-log lines recorded that correctly, so this was a one-off workaround, not a pattern. Grade it in the retro that owns 6ec6bd1 and say whether those two forecast rows stand as recorded or should be flagged method-flawed. No bet depended on them.
