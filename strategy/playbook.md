@@ -5938,6 +5938,19 @@ No.** Official MV Linke share 6.5% against a six-poll mean of 10.17:
    count above: that count is about who finishes first, this one is
    about the shares of the parties that cannot.
 
+**Valid-vote conversion before any share model (2026-09-27 18:xxZ,
+FULL cycle).** When a market resolves on share of VALID votes and the
+polls report raw intentions (undecided, blank and null still in the
+denominator, as Brazilian and most presidential-style polls do), the
+model mean is candidate / sum of named candidates, poll by poll, BEFORE
+averaging. Evidence: Flávio Bolsonaro ≥39% valid (`4e52c227a60f`,
+2026-09-23) averaged raw shares (mean 37.6) and recorded 0.45 against a
+0.85 market. The same polls converted read about 41, and the Sep 15-24
+set reads 41.4, which gives 0.83 at the national sd (superseded by
+`5c423ba0207a`). A market 0.40 away from a poll model is a clause check
+before it is an edge. European party polls already sum to 100 and
+need no conversion.
+
 ## Funnel pool_total: prose rule escalated to a mechanical check
 (DEEP-2026-08-24)
 
