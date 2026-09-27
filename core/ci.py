@@ -17,6 +17,7 @@ import json
 import re
 import subprocess
 import sys
+import urllib.error
 import urllib.request
 
 API = "https://api.github.com"
@@ -63,7 +64,17 @@ def main():
         slug = repo_slug()
         for ref in ("origin/main", "origin/main~1"):
             sha = sh("git", "rev-parse", ref)
-            runs = check_runs(slug, sha)
+            try:
+                runs = check_runs(slug, sha)
+            except urllib.error.HTTPError as e:
+                # A commit that the mirror has not pushed yet does not exist on
+                # GitHub (404/422). That is not "CI broken", it is "no verdict
+                # for this sha": fall through to the previous commit, which is
+                # what the docstring promises for checks that have not landed.
+                if e.code in (404, 422):
+                    out = {"sha": sha, "ref": ref, "status": "none"}
+                    continue
+                raise
             if not runs:
                 out = {"sha": sha, "ref": ref, "status": "none"}
                 continue
