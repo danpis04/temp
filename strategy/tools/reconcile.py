@@ -158,7 +158,8 @@ def main():
     full_ts = [
         parse_ts(e.get("cycle", ""))
         for e in funnel
-        if e.get("tick_type", "FULL") == "FULL" and parse_ts(e.get("cycle", ""))
+        # upper(): the 2026-09-28 14:07Z line wrote "full" and check 6 FAILed
+        if str(e.get("tick_type", "FULL")).upper() == "FULL" and parse_ts(e.get("cycle", ""))
     ]
     newest_full = max(full_ts) if full_ts else None
     if newest_full is not None and newest_full >= cutoff:
