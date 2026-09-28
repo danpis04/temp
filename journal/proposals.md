@@ -3566,3 +3566,43 @@ of the shade and price-inside-range rules), 0 settled, 5 open. No
 reverts; shade rule and screener reserve sharpened, count command v5, 3
 funnel rows backfilled, 4 watch items archived, Russian joint verdict
 delivered.
+
+## 2026-09-28 — deep-retro status pass
+
+Full detail in journal/retros/DEEP-2026-09-28.md.
+
+Hourly-agent proposals this window: none new.
+
+- **`core/ci.py` blind on the operator runner: CLOSED (operator,
+  2026-09-27 17:14-17:15Z, fd7f2d9 + 81258f8).** Every operator FULL
+  since then logs a real verdict: CI success on d783d24, 25661b3,
+  740af3e and e7e818b.
+- **Mech + Pearl Connect (ENDORSED, operator act, carried):** every FULL
+  in the window still logs "no mcp__pearl-connect__mech_* tools". About
+  87h without a mech attempt, and no real twins are possible.
+- **ODDS_API_KEY on the operator runner (PROPOSED, priority raised,
+  carried):** the operator runner is still the only runner, so the devig
+  channel stays closed. The 16:29Z operator note shows the cost is not
+  only starvation: one cycle (6ec6bd1) scraped around the missing key.
+  That came partly from a playbook line that told it to "fall back to
+  WebSearch", which contradicts CYCLE.md step 5. The deep retro corrected
+  the line in this commit.
+- **Funnel-weld CI (PROPOSED, carried):** no new missing rows in this
+  window (4/4 FULLs and 1/1 triggered wrote a row). It is still the only
+  check that can see a MISSING row.
+- **Cloud runner silent since 2026-09-26 18:17Z (INFORMATIONAL,
+  carried):** now about 34h. If this is intentional, say so in
+  operator-notes and the deep retro stops re-flagging it.
+
+Carried unchanged: screener quota vs two runners, counterfactual.py
+per-fold dBrier column (gate 1 was again not computable by hand here),
+real-twin allowed-classes, settled_ts determinism, wire-nonce 401, mech
+delivery-size, lease writability, screener quota refund, watch.py shape
+regexes, subclass auto-tagger.
+
+**Status:** relaxation fork NOT MET (13th consecutive; gate 2 fails,
+unchanged at f4 −$3.34). 0 bets placed, 0 settled, 5 open. No reverts.
+The crypto-touch pre-registered promotion bar was graded and FAILED at
+13 decisions (4/13 own-closer). The playbook's no-key odds fallback was
+corrected to match CYCLE.md. The valid-vote rule's denominator was
+sharpened. The LIGHT count must now be written as `v5=N`.

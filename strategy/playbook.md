@@ -768,8 +768,17 @@ search traps documented below (§Search-result traps). Rules for spending it:
    there; still gate on `sports` actually listing the relevant tennis key
    before spending research on a tennis candidate.
 If the key is missing or the budget is exhausted, `core/odds.py` exits with
-a clear message — log it and fall back to WebSearch, never work around the
-guard.
+a clear message. Log it and SKIP the devig benchmark (CYCLE.md step 5:
+"log that and skip; never scrape around it"). **DEEP-2026-09-28
+correction:** this line used to say "fall back to WebSearch", which
+contradicts the protected procedure. Point 3's WebSearch channel is for
+sports the API does not cover. It is not a substitute for a key that is
+absent. Evidence: 6ec6bd1 (2026-09-26 22:35Z, operator runner, no key)
+rebuilt MLB lines from web previews and recorded PHI/ARI clinch
+`2ffa5a300c61`/`29da9714f863` on them (operator note 2026-09-27 16:29Z).
+Both rows stand as recorded but are flagged method-flawed. They are
+excluded from any devig-channel or mlb-futures calibration claim (net
+dBrier −0.0031, flat either way).
 5. **Confirmation-sweep cap (DEEP-2026-08-10).** The clean-feed finding is
    now CONFIRMED, not provisional: across 3 days and ~40 devigged markets
    (MLB -1.5 slates 08-09 08:15Z/11:15Z/14:19Z/04:16Z, WNBA h2h+spreads,
@@ -3098,6 +3107,48 @@ market on decision-weighted Brier. Ruling unchanged: forecast-only
 "indefinitely" stands until a deep retro re-grades against the full
 pre-registered bar, and a reach-only slice never re-opens it.
 
+**DEEP-2026-09-28 re-grade against the full pre-registered bar (12th-15th
+measured rows; settled by the deep retro's own resolve run at ~04:5xZ,
+so no hourly retro graded them).** All four are BTC/ETH Sep 21-27
+weekly rows. All quote a measured vol with a named, dated source, and
+all LOST (no touch). Own sat ABOVE the market on every one, and the
+market was closer on every one:
+- `efa75442b3c7` BTC dip $80k: own 0.122 vs 0.075, gap 7.4%, CoinGecko
+  31d vol, dB +0.0093.
+- `6f5b7cf4f742` ETH reach $2,900: own 0.324 vs 0.315, gap 5.4%,
+  CoinGecko 31d vol, dB +0.0060.
+- `fd59af69853c` BTC reach $88k: own 0.41 vs 0.285, gap 4.0%, Binance
+  30d vol, dB +0.0869.
+- `e19708121b71` BTC reach $86k (its own Sep 23 window): shaded 0.413 to
+  0.18 with a row-specific reason, vs 0.087, gap 2.0%, dB +0.0248. The
+  unshaded read would have cost +0.163.
+
+These are four decisions: three separate markets and windows, and two
+different vol inputs on the BTC Sep 21-27 dip and reach rows. **Tally: 15
+rows, 13 informative decisions, own closer on 4 of 13 (31%).**
+- Reach split: 6 decisions, own closer on 3.
+- Dip split: 7 decisions, own closer on 1. Dip decision Brier: own
+  about 0.280 vs market 0.267, market ahead.
+- Criterion (a) FAILS: the dip split is behind the market.
+- Criterion (b) FAILS: 31% against a 60% bar. Reaching 60% would take 10
+  straight own-closer decisions.
+
+Direction: own sat above the market on the last 8 counted rows
+(09-24 ×2, 09-25 ×2, these 4). 6 of the 8 resolved No, and the market
+was closer on 6. That is the vol-overstatement signature DEEP-2026-09-01
+called "suggestive". Here is a likely mechanism, not a rule: the 30d
+realized vol carries jump days that a 1-5 day window rarely repeats.
+`e19708121b71` quoted a 4-day close vol (0.21 -> 0.101), and that read
+sat nearest the market and the outcome (n=1).
+**Ruling: the pre-registered promotion bar is graded and FAILED at 13
+decisions.** The family is closed as a bet candidate. Only a new
+pre-registration by a deep retro can re-open it, and that must name a
+different vol input (for example short-window or implied) before any
+row is recorded. Rows the scan surfaces may still be recorded
+forecast-only, but no research minutes go to touch rows. The open Sep
+monthly rows and the WTI ladder are scored as they settle, and they
+cannot re-open this ruling.
+
 Excluded per the sub-boundary taxonomy (DEEP-2026-08-15): Zambia
 (fa185b55a5c3, edge 0.06) and Musk wk 200-219 (7808b6f5a4ef, edge 0.045)
 both settled this tick too, but both carry claimed edges ≤0.10 under a
@@ -4860,6 +4911,13 @@ added rows (dBrier +0.201 and +0.219) both land in f4, which was already
 positive at +0.0363. No-side f3/f4 CF pnl is −$5.95/−$22.16, weaker
 again.
 
+Status 2026-09-28 (DEEP): **NOT MET, 13th consecutive. Gate 2 fails,
+unchanged.** No outside-view-veto row settled in the window. The slice
+is identical to 09-27: 175 rows / 167 CF trades / 118 events / 71W-96L /
++$77.41 / dBrier +0.0332, tool fold pnl [+5.90, −1.99, +39.93, +36.92,
+**−3.34**]. Gate (1) was not recomputed, for the same reason as 09-27,
+and it cannot change the verdict.
+
 If the bar is ever MET: do not loosen the veto wholesale. Propose a
 NARROW carve-out for the best-evidenced sub-class only (current
 candidate shape: No-side timeline theses of the "nothing announced"
@@ -5967,7 +6025,11 @@ FULL cycle).** When a market resolves on share of VALID votes and the
 polls report raw intentions (undecided, blank and null still in the
 denominator, as Brazilian and most presidential-style polls do), the
 model mean is candidate / sum of named candidates, poll by poll, BEFORE
-averaging. Evidence: Flávio Bolsonaro ≥39% valid (`4e52c227a60f`,
+averaging. (DEEP-2026-09-28 sharpening, scope: the denominator is 100
+minus blank/null/undecided only, so it keeps every candidate line,
+including "others" and minor names the poll aggregates. Dividing by the
+headline names alone inflates every share. Quote the denominator used
+in the note.) Evidence: Flávio Bolsonaro ≥39% valid (`4e52c227a60f`,
 2026-09-23) averaged raw shares (mean 37.6) and recorded 0.45 against a
 0.85 market. The same polls converted read about 41, and the Sep 15-24
 set reads 41.4, which gives 0.83 at the national sd (superseded by
