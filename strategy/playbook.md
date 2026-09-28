@@ -4730,6 +4730,49 @@ was what declined the bet; consistent with the slice's own overall
 calibration (dBrier -0.0477, model ahead of market) sitting alongside a
 net-negative dollar total driven by other rows' spread-eaten edge.
 
+**2026-09-28 22:1xZ update (LIGHT tick, operator machine; 3
+`outside-view-veto` + 3 `wide-spread-veto` rows settled across the Sep
+Treasury touch ladder plus Heart of the Beast box office, see
+RETRO-20260928-2213.)** All four Treasury rungs in this batch resolved
+Yes as one continuing rates up-move (same regime as the 09-23/09-24 30y
+ladder, not four independent confirmations); on 3 of the 4 final rungs the
+model was less confident in a hit than the market and the market won.
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| 10y Treasury hit 5.20% Sep (`fdedb184ad3e`) | 0.28 / 0.06 | No | +0.190 | Yes | -5.00 |
+| 10y Treasury hit 5.20% Sep (`3ed526b57eca`) | 0.47 / 0.26 | No | +0.200 | Yes | -5.00 |
+| Heart of the Beast 17-20m (`6e9c17cca30a`) | 0.60 / 0.78 | No | +0.160 | No | +15.83 |
+
+Outside-view-veto: **+$5.83** (1W/2L). Mechanical ledger now 178 rows /
+170 trades / 8 refused / 72W-98L / +$83.25 / dBrier +0.0325 / held-out
++$72.35 (was 175/167/8 refused/71W-96L/+$77.41/+0.0332/+$71.52). Side
+split: no 126 rows/118 trd/54W-64L/+$44.05 (adds all three); yes 52
+rows/52 trd/18W-34L/+$39.20 (unchanged). Check: 44.05 + 39.20 = 83.25.
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| 30y Treasury hit 5.50% Sep (`99df204b7f85`) | 0.67 / 0.5395 | Yes | +0.055 | Yes | +3.13 |
+| 30y Treasury hit 5.55% Sep (`84012264b65d`) | 0.31 / 0.5085 | No | -0.107 | Yes | -5.00 |
+| 5y Treasury hit 5.05% Sep (`a7125d27f510`) | 0.19 / 0.475 | No | -0.150 | Yes | refused (entry 0.96 outside [0.02, 0.95]) |
+
+Wide-spread-veto: **-$1.87** (1W/1L, 1 refused). Ledger now 27 rows / 23
+trades / 4 refused / 13W-10L / -$23.58 / dBrier -0.0235 / held-out -$19.23
+(was 24/21/3 refused/12W-9L/-$21.71/-0.0477/-$13.89). Side split: no 16
+rows/13 trd/6W-7L/-$21.45 (adds the 5.55% loss and the 5.05% refusal); yes
+11 rows/10 trd/7W-3L/-$2.12 (adds the 5.50% win). Check: -21.45 + -2.12 =
+-23.57 (ledger reports -23.58, rounding).
+
+Ruling: no boundary change on either gate. Both vetoes did their job on
+net (outside-view-veto correctly declined two $5 losses that outweighed
+one $15.83 miss; wide-spread-veto near a wash). The calibration shape is
+the more durable signal: this is a second, correlated instance (not an
+independent second confirmation) of "driftless/demeaned Gaussian
+under-calls a sustained multi-day rate-selloff," first flagged n=1 in
+RETRO-20260924-2213. The touch-family counter stays RETIRED
+(DEEP-2026-09-24) — recorded as color for the next time this regime
+recurs, not a rule change today.
+
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
 The veto on judgment estimates with claimed edge > 0.10 stays. This fork
