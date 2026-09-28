@@ -4655,6 +4655,30 @@ Ruling: no boundary change. Same direction as the outside-view-veto pair
 above (later, tighter-edge snapshots of the same two brackets) — both
 would have lost too. 4 for 4 across the whole chain's veto'd snapshots.
 
+**2026-09-28 04:1xZ update (LIGHT tick, operator machine; 1
+`wide-spread-veto` forecast settled, VMA 2026 Video of the Year, see
+RETRO-20260928-0411.)** Kalshi cross-market anchor (ARI 0.19/0.26 vs
+Swift 0.60/0.65) gave a No-side edge ~0.11-0.12 at the PM No ask 0.60,
+declined on spread 0.11 > max_spread 0.06.
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| VMA 2026 VOTY Ariana Grande (`1481eca900b7`) | 0.28 / 0.45 | No | +0.120 | No | +3.33 |
+
+Net this batch: **+$3.33** (1W/0L). Mechanical ledger now 24 rows / 21
+trades / 3 refused / 12W-9L / -$21.71 / dBrier -0.0477 / held-out -$13.89
+(was 23/20/3 refused/11W-9L/-$25.04/-0.0444/-$17.22). Side split: no 14
+rows/12 trd/6W-6L/-$16.45 (adds this win, +$3.33); yes 10 rows/9
+trd/6W-3L/-$5.25 (unchanged). Check: -16.45 + -5.25 = -21.70 (ledger
+reports -21.71, rounding).
+
+Ruling: no boundary change at n=1. The Kalshi-anchored cross-market read
+was correct and well ahead of the market (own Brier 0.0784 vs market
+0.2025 on this row) — the veto's spread gate, not the underlying belief,
+was what declined the bet; consistent with the slice's own overall
+calibration (dBrier -0.0477, model ahead of market) sitting alongside a
+net-negative dollar total driven by other rows' spread-eaten edge.
+
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
 The veto on judgment estimates with claimed edge > 0.10 stays. This fork
