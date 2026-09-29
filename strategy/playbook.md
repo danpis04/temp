@@ -125,6 +125,24 @@ Rank every candidate by WHY the market should be wrong, strongest first:
    included). This is a counting rule, not a betting rule — the point is
    that the one class real execution can act on stops being invisible to
    selection grading.
+   **Cross-venue benchmark freshness (2026-09-29, `4ed738b2045b` RBA
+   settled LOST — first-ever settlement stamped `edge_class=cross-market`,
+   the sole real-eligible class).** Entry read ASX cash-rate futures
+   78% hike vs PM Yes 0.853, claimed PM "rich" by ~7pts, faded PM with a
+   No bet. RBA hiked — PM (|1-0.853|=0.147) was closer to the outcome
+   than futures (|1-0.78|=0.22) even at entry, and the later watch-item
+   re-check (2026-09-21) found futures had moved to 86-93%, continuing
+   to converge toward PM rather than validating the fade; own estimate
+   was never revised on that drift. Same shape as the Liberals
+   book-devig loss below (`b063db346052`): a less-liquid/less-current
+   benchmark read as "right" against a PM price that had already moved
+   on information the benchmark hadn't caught up to yet. **Rule: a
+   cross-market/cross-venue divergence claim needs the benchmark
+   re-checked close to bet time, not a single days-old snapshot — and if
+   a later re-check narrows the gap, that's grounds to re-forecast, not
+   just a checkpoint log entry.** n=1 on this edge_class specifically
+   (0W/1L, -$5.00); real money rides on this exact class, track closely
+   as more settle.
 3. **Book-devig arbitration** (weakest): "my devig of scraped bookmaker odds
    beats the PM price" on a liquid market. A 1-cent-spread PM book with real
    depth is made by someone pricing off the same feeds, live — this class is
