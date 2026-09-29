@@ -4797,6 +4797,32 @@ rows/13 trd/6W-7L/-$21.45 (adds the 5.55% loss and the 5.05% refusal); yes
 -23.57 (ledger reports -23.58, rounding).
 
 Ruling: no boundary change on either gate. (DEEP-2026-09-29 correction:
+outside-view-veto arithmetic below; wide-spread-veto sign stands.)
+
+**2026-09-29 22:1xZ update (LIGHT tick, operator machine; 1
+`wide-spread-veto` forecast settled, see RETRO-20260929-2212.)**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| 10y Treasury hit 5.25% Sep (`a41e6e996b85`) | 0.46 / 0.65 | No | -0.020 | Yes | -5.00 |
+
+Wide-spread-veto: **-$5.00** (0W/1L). Ledger now 28 rows / 24 trades / 4
+refused / 13W-11L / -$28.58 / dBrier -0.0166 / held-out -$24.23 (was
+27/23/4 refused/13W-10L/-$23.58/-0.0235/-$19.23). Side split: no 17
+rows/14 trd/6W-8L/-$26.45 (adds this loss); yes 11 rows/10 trd/7W-3L/-$2.12
+(unchanged). Check: -26.45 + -2.12 = -28.57 (ledger reports -28.58,
+rounding).
+
+Ruling: no boundary change (n=1 on an already-n=28 sample). Third
+correlated instance of the same regime flagged in RETRO-20260924-2213 and
+the 09-28 22:1xZ batch above: the driftless/demeaned Gaussian blend
+under-calls a sustained multi-day rate-selloff on the Treasury touch
+ladder (5.20%, 5.55%, now 5.25% all missed the same direction). No capital
+was at risk — the spread gate did its job regardless of the marginal
+-0.02 edge on the No side. Touch-family counter stays RETIRED
+(DEEP-2026-09-24).
+
+(DEEP-2026-09-29 correction, applies to the outside-view-veto batch above,
 the original line said outside-view-veto "correctly declined two $5
 losses that outweighed one $15.83 miss". The arithmetic is backwards.
 CF +$5.83 means the three declined trades would have MADE $5.83, so this
