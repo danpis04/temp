@@ -1507,6 +1507,21 @@ is one research act. Exception: an official confirmation landing (the
 event stops being a rumor) lifts the cap for that event, since the
 market may then be bettable as an info-race.
 
+DEEP-2026-09-29 grade (Sonnet 5.5, released Sep 28): the three
+category-bar rows lost to the mid by +0.29 (`d94cb5f8c91a`, 0.28 vs
+0.525), +0.31 (`d72585dee48b`, superseded) and +0.16 (`88b5fff734ef`,
+0.60 vs 0.957). All three were one event. The category is now n=37 at
++0.0915, still the worst forecast category. On two re-checks (09:25Z and
+14:2xZ Sep 28) the book rose 0.525 → 0.65 → 0.61/0.76 with nothing new on
+anthropic.com/news, and own stayed at 0.28. The 17:14Z row then cited "no
+release found on anthropic.com/news" as evidence against a 0.93/0.98
+book, hours before the post appeared. This is recorded as a method note,
+not a rule, because the rows are one correlated event. Absence from the
+vendor's news page is not evidence against a same-day release. When a
+liquid book moves hard toward "released" and your own search finds
+nothing either way, the move is the information. Record your number
+closer to the mid, or state in the note why the move is uninformed.
+
 Work from `core/scan.py` output (protected filters already applied).
 Prefer, in order:
 1. **Earnings-beat markets** (`Will X beat quarterly earnings?`) — resolve
@@ -4763,9 +4778,15 @@ rows/13 trd/6W-7L/-$21.45 (adds the 5.55% loss and the 5.05% refusal); yes
 11 rows/10 trd/7W-3L/-$2.12 (adds the 5.50% win). Check: -21.45 + -2.12 =
 -23.57 (ledger reports -23.58, rounding).
 
-Ruling: no boundary change on either gate. Both vetoes did their job on
-net (outside-view-veto correctly declined two $5 losses that outweighed
-one $15.83 miss; wide-spread-veto near a wash). The calibration shape is
+Ruling: no boundary change on either gate. (DEEP-2026-09-29 correction:
+the original line said outside-view-veto "correctly declined two $5
+losses that outweighed one $15.83 miss". The arithmetic is backwards.
+CF +$5.83 means the three declined trades would have MADE $5.83, so this
+batch the veto cost money: the $15.83 miss outweighs the two $10 of
+avoided losses. wide-spread-veto CF −$1.87 means that veto saved $1.87.
+Sign convention: a positive CF P&L is a veto that cost money. Neither
+batch is large enough to move a gate. The tool's gate-2 folds are the
+test, and the fork status below applies it.) The calibration shape is
 the more durable signal: this is a second, correlated instance (not an
 independent second confirmation) of "driftless/demeaned Gaussian
 under-calls a sustained multi-day rate-selloff," first flagged n=1 in
@@ -4960,6 +4981,18 @@ is identical to 09-27: 175 rows / 167 CF trades / 118 events / 71W-96L /
 +$77.41 / dBrier +0.0332, tool fold pnl [+5.90, −1.99, +39.93, +36.92,
 **−3.34**]. Gate (1) was not recomputed, for the same reason as 09-27,
 and it cannot change the verdict.
+
+Status 2026-09-29 (DEEP): **NOT MET, 14th consecutive. Gate 2 fails.**
+3 outside-view-veto rows settled (10y 5.20% `fdedb184ad3e` and
+`3ed526b57eca`, −$5.00 each; Heart of the Beast `6e9c17cca30a`
++$15.83). Tool output: 178 rows / 170 CF trades / 120 events / 72W-98L /
++$83.25 / dBrier +0.0325 / held-out +$72.35. Fold pnl [+10.90, −2.71,
++110.47, −51.66, +16.25]: 2 of 4 held-out folds positive, 3 needed.
+Adding 3 rows shifted the fold boundaries, which is why f3 moved from
++$36.92 to −$51.66. Gate (3) holds (120 events). Gate (1) was not
+recomputed, because it needs an inline script and that needs approval
+on this runner. Overall dBrier is still positive (+0.0325), so gate 1
+would have to pass on the folds alone, and gate 2 fails anyway.
 
 If the bar is ever MET: do not loosen the veto wholesale. Propose a
 NARROW carve-out for the best-evidenced sub-class only (current

@@ -3606,3 +3606,48 @@ The crypto-touch pre-registered promotion bar was graded and FAILED at
 13 decisions (4/13 own-closer). The playbook's no-key odds fallback was
 corrected to match CYCLE.md. The valid-vote rule's denominator was
 sharpened. The LIGHT count must now be written as `v5=N`.
+
+## 2026-09-29 — deep-retro status pass
+
+Full detail in journal/retros/DEEP-2026-09-29.md.
+
+Hourly-agent proposals this window: none new. The 14:35Z FULL noted
+that the Saudi-strikes-Yemen daily siblings for Sep 18-27 are all still
+open on gamma, 10 days past their dates. It logged this as "not yet a
+proposal". Carried as INFORMATIONAL: if UMA never settles them, those
+forecast rows stay open forever.
+
+- **Funnel-weld CI (PROPOSED, priority raised):** a new instance. The
+  2026-09-28 09:25Z FULL (5e17270) wrote no funnel row at all. The
+  screener did run (screener.jsonl gained 300 rows, and the quota moved
+  to 45/150). `reconcile.py` check 6 cannot see this, because it only
+  asks whether the NEWEST FULL is inside 24h. `reconcile.py` also FAILs
+  right now (3 coverage gaps: re-check entries at 17:07Z and 20:07Z carry
+  no forecast_id), and no FULL since 20:15Z logged that FAIL. Asks: a CI
+  check that every `(FULL` line in cycles.log has a funnel row within
+  ±40 min, and that CI surface a reconcile FAIL.
+- **Mech + Pearl Connect (ENDORSED, operator act, carried):** every FULL
+  still logs "no mcp__pearl-connect__mech_* tools", now about 111h.
+- **ODDS_API_KEY on the operator runner (PROPOSED, priority raised,
+  carried):** the 16:45Z triggered tick hit it on two China Open tennis
+  markets. It logged and skipped the devig as CYCLE.md requires (no
+  scrape this time), and centred on the mid.
+- **Cloud runner silent since 2026-09-26 18:17Z (INFORMATIONAL,
+  carried):** now about 58h.
+- **3h pacing cap (NEW, deep-retro, for the operator's view):** the
+  hourly agent broke the notes' "never more than 3h out" cap on three
+  consecutive overnight/morning FULLs (03:20Z 09-28, 09:25Z, 03:40Z
+  09-29). Each time it gave a stated reason, and no dated catalyst was
+  missed. The cap lives in agent-editable notes, so this needs no
+  operator act. Flagged so the operator can say whether a 6h overnight
+  hop is acceptable. Until then the deep retro enforces 3h.
+
+Carried unchanged: screener quota vs two runners, counterfactual.py
+per-fold dBrier column (gate 1 again not computed), real-twin
+allowed-classes, settled_ts determinism, wire-nonce 401, mech
+delivery-size, lease writability, screener quota refund, watch.py shape
+regexes, subclass auto-tagger.
+
+**Status:** relaxation fork NOT MET (14th consecutive; gate 2 fails, 2
+of 4 held-out folds positive). 0 bets placed, 0 settled, 5 open. No
+reverts. One sharpen: the playbook veto-ruling sign was backwards.
