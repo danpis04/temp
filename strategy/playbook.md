@@ -5678,6 +5678,16 @@ model read as "api view: X" in the note. A 0.6-ish mid (last week's
 0.93-vs-0.63 win) is disagreement, not certainty — the rule does not
 touch it. n=1 event; recording discipline, category bar unchanged.
 
+**2026-09-29 18:08Z grading (RETRO-20260929-1808), Sep 22-29 weeklies.**
+Unshaded bootstrap: Musk 180-199 recorded 0.78 (shade view 0.60) WON —
+Brier 0.048 vs shade 0.160 vs mid 0.198; 1/1 independent events since the
+RETRO-20260925-1812 rule. Api-gap: Trump resolved 160-179, the bracket the
+API count + aligned bootstrap implied (recorded 0.30 WON; gap view 0.15
+would have scored 0.723, mid 0.664) — the gap did not recur, tally 1 for /
+1 against. Keep the gap as a "gap view: X" note on non-near-certain rows;
+record the bootstrap. The mid priced ~one bracket above the bootstrap
+again and lost, so a mid-shaped gap is not evidence the gap exists.
+
 ## Utterance-market base-rate gate (enacted DEEP-2026-09-12)
 
 A Yes-side BET on a say-the-word / trump-mention / vance-mention /
