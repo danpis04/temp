@@ -7046,3 +7046,21 @@ precise question with the date near the front (front-loading rule
 above), no price in the prompt text, sequential sends, `mechlog.py
 record` on every attempt including failures. This cycle's own research
 step counts toward today's sample-of-3 tally.
+
+## Settled 2026-09-29 15:0xZ: StatCan flash ladder confirmed once, Hormuz weekly-sum shade too timid (RETRO-20260929-1510)
+
+- **Canada monthly GDP brackets:** build the ladder from a sourced
+  StatCan flash→first-print error table (The Daily releases, ≥12
+  months), not from memory. First use (July 2026 print, bet
+  05333272be9d +$3.77, forecasts 5335c074c4dc / e739e3064a65 /
+  5d17b19ec860) put all three rows ahead of the mid (Δ −0.057 / −0.017 /
+  −0.016); the table cut a 0.76 memory prior to 0.63, which was the
+  right direction. n=1 print event — method confirmed, no sizing change.
+- **PortWatch Hormuz weekly-sum brackets (forecast-only,
+  `unvalidated-method`):** when a dated in-week measured print (e.g.
+  Reuters shiptracking daily count) shows a level shift against the
+  trailing weeks, centre the week on the in-week rate; do not partially
+  shade the pre-shift history. First instance (234270c5e20f 20-24 est
+  0.30 vs mkt 0.41, WON; 12069f6c5a3c <20 est 0.15 vs 0.13, LOST) had
+  both rows behind the market because the shade stopped halfway. Stays
+  forecast-only until ≥3 weekly events have settled.
