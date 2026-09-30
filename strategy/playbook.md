@@ -4874,6 +4874,38 @@ one event, two snapshots of the same unfinished-process read. The
 fact-finality subclass did its job. The estimation lesson is in the
 process-shape bar section (scope extension, RETRO-20260930-0010).
 
+**2026-09-30 15:0xZ update (LIGHT tick, operator machine; settlement
+grading owed by the 2026-09-17/09-18 Core PCE watch item, 2
+`outside-view-veto` rows settled on the August Core PCE print event —
+BEA release Sep 30 12:30Z, actual Core PCE YoY 3.0%, MoM 0.2%; see
+RETRO-20260930-1507.)** Both camps quoted at research time (Fed-staff
+"about 3.2" via the Sep16 Warsh presser, bank trackers 3.3-3.4) missed
+low: the print landed a full 0.2-0.4pt below every named source,
+outside the entire researched bracket ladder (3.1-3.5). Both declined
+trades would have lost.
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| Core PCE YoY 3.2% Aug (`9f05a589aba3`) | 0.49 / 0.31 | Yes | +0.130 | No | -5.00 |
+| Core PCE MoM 0.2% Aug (`275271e3d70b`) | 0.19 / 0.275 | No | +0.080 | Yes | -5.00 |
+
+Outside-view-veto: **-$10.00** (0W/2L; veto saved $10). Mechanical
+ledger now 182 rows / 174 trades / 8 refused / 72W-102L / +$63.25 /
+dBrier +0.0353 / held-out +$57.35 (was 180/172/8 refused/72W-100L/
++$73.25/+0.0342/+$62.35). Side split: no 129 rows/121 trd/54W-67L/
++$29.05 (adds the MoM loss); yes 53 rows/53 trd/18W-35L/+$34.20 (adds
+the YoY loss). Check: 29.05 + 34.20 = 63.25.
+
+Ruling: no boundary change. Two rows, two distinct sub-markets of the
+same BEA event (YoY 3.2% bucket, MoM 0.2% bucket) — the veto declined
+both, correctly, since the modal reasoning behind each (revision-size
+camps for YoY, tracker-cluster mean for MoM) both overshot the actual
+print. The bet that WAS placed (No on YoY 3.3%, `8894592b953a`) won,
+but for the same reason these declines were right: any single point
+estimate near the camps' 3.2-3.4 range was going to be wrong, and No
+on the modal bracket was the only shape that paid off across the whole
+miss. See RETRO-20260930-1507 for the camp-blind-spot lesson.
+
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
 The veto on judgment estimates with claimed edge > 0.10 stays. This fork
@@ -6927,6 +6959,27 @@ statement vs printed value, 2024 on) so the carve-out can be tested on
 it; if wrong, record that "running at about" is looser than the
 Powell-era formula and stop treating it as a staff point estimate.
 
+**SETTLED 2026-09-30 (RETRO-20260930-1511): actual August Core PCE YoY
+3.0%, MoM 0.2% (BEA, 12:30Z).** Neither camp was right, but the staff
+estimate was the closer of the two: "about 3.2" (revision camp) missed
+low by 0.2, "3.3-3.4" (no-revision camp, GS/BofA/Cleveland) missed low
+by 0.3-0.4. The 3.3 No bet (8894592b953a) won and the vetoed 3.2 Yes
+(9f05a589aba3, edge 0.13) correctly stayed out — but a THIRD outcome
+neither camp, nor my own dist (3.1:0.14 3.2:0.49 3.3:0.24 3.4:0.10
+other:0.03), gave meaningful mass to: the print landed below the
+entire researched ladder (3.1-3.5 brackets, no forecast below 3.1 was
+ever formed). Ruling, per the pre-registration: "running at about" IS
+looser than the Powell-era point-formula reads elsewhere in this
+playbook - treat the staff presser line as a DIRECTIONAL steer (which
+camp, if either, is closer) not a point estimate, and when camps
+disagree by more than ~0.2, widen the own-distribution tails past the
+lowest/highest named tracker rather than letting the ladder's own
+bracket coverage cap where mass can go (own dist here put only 0.03 on
+"other," i.e. outside 3.1-3.5, against a market that itself apparently
+had ~0 priced there too - a shared blind spot, not an edge). n=1;
+watch for a second instance before hardening this into a numbered
+gate.
+
 **Mech, same cycle (3 market-aware + 1 paired v4, all off-chain first
 try, context delivered: `market_prob_seen` equalled the sent price on all
 three).** The tool's retrieval missed the decisive current fact on every
@@ -6937,6 +6990,19 @@ Polymarket-derived pages ranked in the serper top 7 on two of three (UMich: June
 event page #1 and a stale "27%" snippet; WTI: event page #1, laikalabs
 "76%", chanceindex), price-leak instances five and six. Grade at
 settlement; nothing to act on yet.
+
+**PCE mech pair graded 2026-09-30 (RETRO-20260930-1511):** on the 3.3
+Yes question, realized outcome 0 (settled No). Absolute error ranked
+best to worst: v4 0.16 (0.16) < own pre-mech 0.22 (0.22) < own
+post-mech 0.24 (0.24) < market-aware 0.29 (0.29) < market mid 0.325
+(0.325). The context-carrying tool (market-aware) was the LEAST
+accurate of the five reads on this one delivery, and moved my own
+post-mech estimate (0.22->0.24) in the wrong direction. These are the
+old `superforcaster-market-aware`/`superforcaster-polymarket-v4`
+(GPT-4.1) tool names, not the R1-14B pair under the 2026-09-14
+evaluation reset, so this result doesn't count toward that window -
+recorded here only as a data point on market-aware-vs-blind for the
+pre-reset tool.
 
 ## News-cell process-shape bar (enacted RETRO-20260918-1518)
 
