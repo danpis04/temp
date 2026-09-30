@@ -4855,6 +4855,35 @@ was at risk — the spread gate did its job regardless of the marginal
 -0.02 edge on the No side. Touch-family counter stays RETIRED
 (DEEP-2026-09-24).
 
+**2026-09-30 16:0xZ update (LIGHT tick, operator machine; 1 `wide-spread-veto`
+forecast settled fillable + 1 refused, same chain, gas $4.50 touch, see
+RETRO-20260930-1609.)** Chained pair `27fd401006d8` (Sep17, est 0.85) →
+`1a0bd265abba` (Sep20, est 0.94), both extrapolating a steady ~2c/day AAA
+gas-price rise straight to the $4.50 threshold — a **trend-extrapolation**
+row, the first one cleanly labeled as such in this table.
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| Gas $4.50 High by Sep30 (`27fd401006d8`, superseded) | 0.85 / 0.89 | Yes | -0.040 | No | -5.00 |
+
+Plus a same-chain refusal (`1a0bd265abba`, ask 0.98 outside the fill
+model's [0.02, 0.95] range) — a settled row, no counterfactual trade.
+
+Wide-spread-veto: **-$5.00** (0W/1L, 1 refused). Ledger now 30 rows / 25
+trades / 5 refused / 13W-12L / -$33.58 / dBrier +0.0152 / held-out -$29.23
+(was 28/24/4 refused/13W-11L/-$28.58/-0.0166/-$24.23). Side split: yes 13
+rows/11 trd/7W-4L/-$7.12 (adds this loss); no 17 rows/14 trd/6W-8L/-$26.45
+(unchanged). Check: -7.12 + -26.45 = -33.57 (ledger reports -33.58,
+rounding).
+
+Ruling: no boundary change (n=1 event). The price never reached the
+threshold — confidence rose (0.85→0.94) as the linear trend closed in on a
+round number, with no deceleration/mean-reversion term; the market's mid
+(0.59→0.58) stayed skeptical and was right. `wide-spread-veto` kept both
+legs unexecuted (spreads 0.60/0.82), so the miss cost nothing real. Filed
+as the first concrete trend-extrapolation instance for the next
+round-number-threshold commodities-touch candidate to check against.
+
 **2026-09-30 00:1xZ update (FULL cycle, operator machine; 2
 `outside-view-veto` rows settled on "Trump renames AI by September 30?"
 (4769494), Yes; see RETRO-20260930-0010.)**
