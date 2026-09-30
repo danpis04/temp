@@ -4899,6 +4899,35 @@ legs unexecuted (spreads 0.60/0.82), so the miss cost nothing real. Filed
 as the first concrete trend-extrapolation instance for the next
 round-number-threshold commodities-touch candidate to check against.
 
+**2026-09-30 22:0xZ update (LIGHT tick, operator machine; 2
+`wide-spread-veto` rows settled, the two 5-year Treasury touch siblings
+of the 30y ladder pair-test (5.10% and 5.07%); see RETRO-20260930-2207.)**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| 5y Treasury hit 5.10% Sep (`5ab6b32a4c9d`) | 0.24 / 0.51 | No | -0.190 | No | +0.26 |
+| 5y Treasury hit 5.07% Sep (`62d76db86f20`) | 0.41 / 0.625 | No | +0.050 | Yes | -5.00 |
+
+Plus two refusals, settled rows with no counterfactual trade (entry
+price outside the fill model's [0.02, 0.95] range): the superseded 5.10%
+row `3db163312e35` (ask 0.96) and `093929fcaa5d` 30y hit 5.60% (ask
+0.966).
+
+Wide-spread-veto: **-$4.74** (1W/1L, 2 refused). Ledger now 34 rows / 27
+trades / 7 refused / 14W-13L / -$38.31 / dBrier +0.0179 / held-out
+-$35.45 (was 30/25/5 refused/13W-12L/-$33.58/+0.0152/-$29.23). Side
+split: no 21 rows/16 trd/7W-9L/-$31.19 (adds all four); yes 13 rows/11
+trd/7W-4L/-$7.12 (unchanged). Check: -31.19 + -7.12 = -38.31.
+
+Ruling: no boundary change. `093929fcaa5d` (own 0.09 vs actual Yes) is
+the worst single-row miss of this whole batch (own brier 0.828 vs
+market's 0.630) and, like `62d76db86f20` (own 0.41 vs actual Yes,
+market 0.625 closer), both belong to the same sustained-selloff regime
+as the 30y ladder graded in the outside-view-veto table just below —
+see the joint verdict in RETRO-20260930-2207. Neither would have been
+executable anyway (both wide-spread-veto), so the miss cost calibration
+only, not P&L.
+
 **2026-09-30 00:1xZ update (FULL cycle, operator machine; 2
 `outside-view-veto` rows settled on "Trump renames AI by September 30?"
 (4769494), Yes; see RETRO-20260930-0010.)**
@@ -4973,6 +5002,33 @@ to a different entrant (Xiaomi) on the Sep 25 update. The veto declined
 a trade whose stated reason was wrong, which is the veto's job. The
 real lesson (close-margin leaderboard favourites at >0.90) sits with
 the >0.90 consensus rule in Estimation method.
+
+**2026-09-30 22:0xZ update (LIGHT tick, operator machine; 2
+`outside-view-veto` rows settled — NVIDIA largest-company Sep30 and the
+final leg of the 30y Treasury ladder pair-test, dip below 5.21%; see
+RETRO-20260930-2207.)**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| NVIDIA largest co Sep30 (`ce1f37ed95c0`) | 0.78 / 0.9145 | No | +0.134 | Yes | -5.00 |
+| 30y Treasury dip below 5.21% Sep (`3e4351bdb5c6`) | 0.30 / 0.12 | Yes | +0.170 | No | -5.00 |
+
+Outside-view-veto: **-$10.00** (0W/2L; veto saved $10). Mechanical
+ledger now 185 rows / 177 trades / 8 refused / 73W-104L / +$119.67 /
+dBrier +0.0330 / held-out +$113.78 (was 183/175/8 refused/73W-102L/
++$129.67/+0.0327/+$123.78). Side split: no 131 rows/123 trd/55W-68L/
++$90.47 (adds the NVIDIA loss); yes 54 rows/54 trd/18W-36L/+$29.20
+(adds the Treasury loss). Check: 90.47 + 29.20 = 119.67.
+
+Ruling: no boundary change. NVIDIA was a correct decline on its own
+merits (the market's 0.91 confidence in NVDA staying #1 held). The
+Treasury row closes the 30y ladder pair-test: see the final verdict in
+RETRO-20260930-2207 — one sustained-selloff regime explains all four
+legs (03f07792d701/7771a4b3b7ac/b8d163385f59 Yes, this row No), and the
+market's asymmetric upward-drift pricing beat my driftless read on the
+two rungs closest to the then-current level. Second confirmation
+(first: RETRO-20260924-2213) of the driftless-Gaussian-under-calls-a-
+selloff pattern; touch-family counter stays RETIRED (DEEP-2026-09-24).
 
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
