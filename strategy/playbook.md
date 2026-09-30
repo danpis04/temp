@@ -2052,6 +2052,21 @@ move as favorable or adverse.
      (UI settings, which mirror/table); it does not apply to mechanical
      resolution sources (a number printed in an official filing/API),
      which aren't implicated by this evidence.
+     **Counter-instance (RETRO-20260930-1907):** the >0.90 consensus is
+     not infallible on CLOSE-MARGIN end-of-month leaderboard markets.
+     Alibaba best Chinese model, Sep (3008043): market 0.875 → 0.935 →
+     0.93 on Sep 17/20/23 while qwen3.8-max led by only 4-6 pts inside
+     overlapping +/-5-6 CIs; the Sep 25 table put a new entrant
+     (Xiaomi mimo-v2.6-pro, 1491) on top and Alibaba resolved **No**.
+     Tally of "fade a >0.90 leaderboard favourite" reads: **1W/1L**
+     (Aug Alibaba `a467140e14e7` lost, Sep Alibaba `f41e0b09f084` would
+     have won +$66.42 CF, though its stated reason, a kimi flip, was a
+     misread; the real cause was a later table update). No rule change
+     at n=2. Do this on every such read: when the leader's margin is
+     inside the two models' combined CI AND the board still gets one
+     more update before the deadline, write "one more table update
+     before the deadline" into the note as an explicit risk with its
+     own probability. Do not fold it into a generic "drift" discount.
    - **Outside-view veto on large claimed edges (DEEP-2026-08-07).** The
      settled record splits cleanly on claimed edge size: bets claiming
      edge > 0.10 are **0W/5L, -$25, brier_delta +0.4587** (agent brier
@@ -4934,6 +4949,30 @@ but for the same reason these declines were right: any single point
 estimate near the camps' 3.2-3.4 range was going to be wrong, and No
 on the modal bracket was the only shape that paid off across the whole
 miss. See RETRO-20260930-1507 for the camp-blind-spot lesson.
+
+**2026-09-30 19:0xZ update (FULL cycle, operator machine; 1
+`outside-view-veto` row settled on "Will Alibaba have the best Chinese
+AI model at the end of September 2026?" (3008043), No; flagged by
+`counterfactual.py reconcile` section B; see RETRO-20260930-1907.)**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| Alibaba best Chinese model Sep (`f41e0b09f084`, superseded) | 0.65 / 0.935 | No | +0.280 | No | +66.42 |
+
+Outside-view-veto: **+$66.42** (1W/0L; the veto cost $66.42). Mechanical
+ledger now 183 rows / 175 trades / 8 refused / 73W-102L / +$129.67 /
+dBrier +0.0327 / held-out +$123.78 (was 182/174/8 refused/72W-102L/
++$63.25/+0.0353/+$57.35). Side split: no 130 rows/122 trd/55W-67L/
++$95.47 (adds this row); yes 53 rows/53 trd/18W-35L/+$34.20 (unchanged).
+Check: 95.47 + 34.20 = 129.67.
+
+Ruling: no boundary change. The winning counterfactual rests on a
+misread: the Sep 20 note saw kimi-k3-max overtake qwen, and the Sep 23
+re-fetch showed the resolution table did not have that. Alibaba lost
+to a different entrant (Xiaomi) on the Sep 25 update. The veto declined
+a trade whose stated reason was wrong, which is the veto's job. The
+real lesson (close-margin leaderboard favourites at >0.90) sits with
+the >0.90 consensus rule in Estimation method.
 
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
