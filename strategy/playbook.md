@@ -143,6 +143,21 @@ Rank every candidate by WHY the market should be wrong, strongest first:
    just a checkpoint log entry.** n=1 on this edge_class specifically
    (0W/1L, -$5.00); real money rides on this exact class, track closely
    as more settle.
+   **DEEP-2026-09-30 sharpening (the procedure stays; the evidence claim
+   is withdrawn).** (i) "PM was closer" is not a venue grade: on a
+   single binary outcome the venue with the higher price on the side
+   that happened is always "closer". The loss was also the expected
+   result (own P(No) 0.23, so 77% to lose). (ii) The snapshot was not
+   days old: futures were read 2026-09-16 and the bet was placed
+   2026-09-16 15:13Z. (iii) The gap did not narrow. On 09-21 futures/OIS
+   read 86-93% and PM 0.967, so PM was still 4-10pts rich (the watch
+   item's own words), and a re-forecast would still have favoured No.
+   What the rule keeps: re-read the benchmark within the same FULL
+   cycle that places the bet, and re-forecast when it moves by more than
+   the claimed edge. Ranking venues needs a tally, not one draw: record
+   every settled cross-venue pair as (PM, benchmark, outcome) and
+   compare Brier only at n ≥ 10. Tally so far: RBA Sep (0.853, 0.78,
+   1): n=1.
 3. **Book-devig arbitration** (weakest): "my devig of scraped bookmaker odds
    beats the PM price" on a liquid market. A 1-cent-spread PM book with real
    depth is made by someone pricing off the same feeds, live — this class is
@@ -4803,7 +4818,7 @@ outside-view-veto arithmetic below; wide-spread-veto sign stands.)
 the original line said outside-view-veto "correctly declined two $5
 losses that outweighed one $15.83 miss". The arithmetic is backwards.
 CF +$5.83 means the three declined trades would have MADE $5.83, so this
-batch the veto cost money: the $15.83 miss outweighs the two $10 of
+batch the veto cost money: the $15.83 miss outweighs the $10 of
 avoided losses. wide-spread-veto CF −$1.87 means that veto saved $1.87.
 Sign convention: a positive CF P&L is a veto that cost money. Neither
 batch is large enough to move a gate. The tool's gate-2 folds are the
@@ -5058,6 +5073,16 @@ Adding 3 rows shifted the fold boundaries, which is why f3 moved from
 recomputed, because it needs an inline script and that needs approval
 on this runner. Overall dBrier is still positive (+0.0325), so gate 1
 would have to pass on the folds alone, and gate 2 fails anyway.
+
+Status 2026-09-30 (DEEP): **NOT MET, 15th consecutive. Gate 2 fails.**
+2 outside-view-veto rows settled, both on Trump renames AI
+(`3136e5d4f644`, `16461ae94666`), −$5.00 each, so the veto saved $10.
+Tool output: 180 rows / 172 CF trades / 121 events / 72W-100L / +$73.25
+/ dBrier +0.0342 / held-out +$62.35. Fold pnl [+10.90, −2.71, +110.47,
+−51.66, +6.25]: f3 is negative, so the two most recent folds are not
+both positive. Gate (3) holds (121 events). Gate (1) was not recomputed,
+for the same reason as 09-29. Overall dBrier rose (+0.0325 → +0.0342),
+which moves away from the bar.
 
 If the bar is ever MET: do not loosen the veto wholesale. Propose a
 NARROW carve-out for the best-evidenced sub-class only (current
@@ -6974,6 +6999,19 @@ only for a dated fact that maps to No (the Exception above). If I believe
 more than 0.10 below the mid, the note must name that fact. This caps how
 far I move on absence, not what I honestly believe: my record in this
 shape says absence-driven distance from the mid is mostly miscalibration.
+
+**DEEP-2026-09-30 sharpening: scope and gradeability.** "Publicly
+committed" means a dated, sourced statement by the actor (or the
+actor's office) that the act will happen inside the window. The AI
+rename had three (UNGA Sep 22, the WH fact sheet Sep 26, the "about 5
+o'clock" remark Sep 29). A pundit's expectation or a market rumour is
+not a commitment, and the cap does not apply there: the Opus
+release-day rows, where absence-led No was right, had no commitment.
+When the cap binds, also write the uncapped read in the note as
+"absence view: X", the same pattern as "gap view: X" in the postcount
+section, so each deep retro can score the cap against the view it
+replaced. Grade at n ≥ 5 capped rows. If the absence views beat the
+capped rows there, lift the cap.
 
 **Re-open condition.** Rows skipped under this bar are graded as their own
 slice at each deep retro. When 10 have settled, lift the bar if their

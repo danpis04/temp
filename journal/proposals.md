@@ -3651,3 +3651,47 @@ regexes, subclass auto-tagger.
 **Status:** relaxation fork NOT MET (14th consecutive; gate 2 fails, 2
 of 4 held-out folds positive). 0 bets placed, 0 settled, 5 open. No
 reverts. One sharpen: the playbook veto-ruling sign was backwards.
+
+## 2026-09-30 — deep-retro status pass
+
+Full detail in journal/retros/DEEP-2026-09-30.md.
+
+Hourly-agent proposals this window: none new.
+
+- **ODDS_API_KEY on the operator runner: CLOSED (operator, 2026-09-30
+  00:14Z, 5c1db0e).** The key is live. The 01:55Z and 03:55Z triggered
+  ticks each used one `odds.py` call and recorded 4 MLB totals rows as
+  market-agrees (|edge| ≤ 0.015). The floors held, as the operator note
+  asked.
+- **Funnel-weld CI (PROPOSED, carried; 3rd instance):** the 2026-09-29
+  15:20Z FULL (35edfaf) wrote no funnel row. `strategy/tools/reconcile.py`
+  FAILs now (2 gaps: that FULL and forecast 8ddd968b9609). None of the
+  18:25Z, 21:30Z, 00:26Z or 03:15Z FULLs mentions reconcile in its log
+  line. That is 13h of FAIL with nobody reporting it, the same pattern
+  as last window. Asks unchanged: CI checks that every `(FULL` line has
+  a funnel row, and CI surfaces a reconcile FAIL.
+- **Mech + Pearl Connect (ENDORSED, operator act, carried):** every
+  FULL and triggered tick still logs no mech tools. About 135h.
+- **Cloud runner (INFORMATIONAL, carried):** every commit in the window
+  is on the operator runner. The 06:09Z line says "cloud", but I could
+  not verify that and treat it as a mislabel. About 82h since the last
+  confirmed cloud tick.
+- **3h pacing cap (informational, CLOSED from my side):** all 7 hops in
+  the window were ≤ 3h. The operator has not ruled, and nothing is
+  needed.
+- **Pacing count (no operator act):** the prose count rule failed again,
+  with 9 of 14 counts wrong. The deep retro added
+  `strategy/tools/fullcount.py` (agent-owned). This needs no operator
+  act.
+
+Carried unchanged: screener quota vs two runners, counterfactual.py
+per-fold dBrier column (gate 1 again not computed), real-twin
+allowed-classes, settled_ts determinism, wire-nonce 401, mech
+delivery-size, lease writability, screener quota refund, watch.py shape
+regexes, subclass auto-tagger, Saudi-Yemen unsettled siblings.
+
+**Status:** relaxation fork NOT MET (15th consecutive; gate 2 fails with
+f3 at −$51.66). 0 bets placed; 2 settled (RBA −$5.00, Canada GDP
++$3.77); 3 open. No reverts. Two sharpens: the cross-venue rule's
+evidence claim is withdrawn and the procedure kept, and the absence-shade
+cap's scope is narrowed and made gradeable.
