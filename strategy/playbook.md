@@ -4799,8 +4799,26 @@ rows/13 trd/6W-7L/-$21.45 (adds the 5.55% loss and the 5.05% refusal); yes
 Ruling: no boundary change on either gate. (DEEP-2026-09-29 correction:
 outside-view-veto arithmetic below; wide-spread-veto sign stands.)
 
+(DEEP-2026-09-29 correction, applies to the outside-view-veto batch above,
+the original line said outside-view-veto "correctly declined two $5
+losses that outweighed one $15.83 miss". The arithmetic is backwards.
+CF +$5.83 means the three declined trades would have MADE $5.83, so this
+batch the veto cost money: the $15.83 miss outweighs the two $10 of
+avoided losses. wide-spread-veto CF −$1.87 means that veto saved $1.87.
+Sign convention: a positive CF P&L is a veto that cost money. Neither
+batch is large enough to move a gate. The tool's gate-2 folds are the
+test, and the fork status below applies it.) The calibration shape is
+the more durable signal: this is a second, correlated instance (not an
+independent second confirmation) of "driftless/demeaned Gaussian
+under-calls a sustained multi-day rate-selloff," first flagged n=1 in
+RETRO-20260924-2213. The touch-family counter stays RETIRED
+(DEEP-2026-09-24) — recorded as color for the next time this regime
+recurs, not a rule change today.
+
 **2026-09-29 22:1xZ update (LIGHT tick, operator machine; 1
-`wide-spread-veto` forecast settled, see RETRO-20260929-2212.)**
+`wide-spread-veto` forecast settled, see RETRO-20260929-2212.)** (Moved
+here 2026-09-30 00:1xZ unchanged; it had been pasted inside the
+DEEP-2026-09-29 correction above, splitting that parenthetical.)
 
 | Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
 |---|---|---|---|---|---|
@@ -4822,21 +4840,24 @@ was at risk — the spread gate did its job regardless of the marginal
 -0.02 edge on the No side. Touch-family counter stays RETIRED
 (DEEP-2026-09-24).
 
-(DEEP-2026-09-29 correction, applies to the outside-view-veto batch above,
-the original line said outside-view-veto "correctly declined two $5
-losses that outweighed one $15.83 miss". The arithmetic is backwards.
-CF +$5.83 means the three declined trades would have MADE $5.83, so this
-batch the veto cost money: the $15.83 miss outweighs the two $10 of
-avoided losses. wide-spread-veto CF −$1.87 means that veto saved $1.87.
-Sign convention: a positive CF P&L is a veto that cost money. Neither
-batch is large enough to move a gate. The tool's gate-2 folds are the
-test, and the fork status below applies it.) The calibration shape is
-the more durable signal: this is a second, correlated instance (not an
-independent second confirmation) of "driftless/demeaned Gaussian
-under-calls a sustained multi-day rate-selloff," first flagged n=1 in
-RETRO-20260924-2213. The touch-family counter stays RETIRED
-(DEEP-2026-09-24) — recorded as color for the next time this regime
-recurs, not a rule change today.
+**2026-09-30 00:1xZ update (FULL cycle, operator machine; 2
+`outside-view-veto` rows settled on "Trump renames AI by September 30?"
+(4769494), Yes; see RETRO-20260930-0010.)**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| Trump renames AI Sep30 (`3136e5d4f644`, superseded) | 0.30 / 0.615 | No | +0.310 | Yes | -5.00 |
+| Trump renames AI Sep30 (`16461ae94666`) | 0.85 / 0.9585 | No | +0.107 | Yes | -5.00 |
+
+Outside-view-veto: **-$10.00** (0W/2L; sign convention above, so the
+veto saved $10). Mechanical ledger now 180 rows / 172 trades / 8 refused /
+72W-100L / +$73.25 / dBrier +0.0342 / held-out +$62.35 (was 178/170/8
+refused/72W-98L/+$83.25/+0.0325/+$72.35). Side split: no 128 rows/120
+trd/54W-66L/+$34.05 (adds both); yes 52 rows/52 trd/18W-34L/+$39.20
+(unchanged). Check: 34.05 + 39.20 = 73.25. Ruling: no boundary change;
+one event, two snapshots of the same unfinished-process read. The
+fact-finality subclass did its job. The estimation lesson is in the
+process-shape bar section (scope extension, RETRO-20260930-0010).
 
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
@@ -6928,8 +6949,31 @@ found in N searches" and "the cadence has slipped" are absences, not facts,
 and never qualify.
 
 **Not covered.** Own-Yes leans in the news cell (n=1, `b21e42c123a1`, a
-different failure), other categories, and mechanical anchors (official
-print, transcript count, cross-market arithmetic).
+different failure) and mechanical anchors (official print, transcript
+count, cross-market arithmetic).
+
+**Scope extension: any category (RETRO-20260930-0010).** The shape is set
+by the question, not the tag. Govt-act-by-date questions tagged
+`politics-general` (or anything else) fall under this bar too. The Trump
+AI-rename market (4769494, settled Yes Sep 30) was already handled this
+way in substance, and it produced a fifth independent event in the same
+failure: five recorded estimates, every one at or below the mid, and the
+market was right. Brier vs mid per row: 0.28/0.265 -0.022 (the one row
+where I sat at the market), 0.12/0.175 +0.093, 0.35/0.54 +0.211,
+0.30/0.615 +0.342, 0.85/0.9585 +0.021. The two process-shape-bar rows plus
+the two veto rows are 0W/4L counterfactual, -$20.
+
+**Estimation rule for this shape (RETRO-20260930-0010).** The bar gates
+bets, but my *forecasts* kept making the same mistake, one revision after
+another. Evidence: the rows above, where "whitehouse.gov shows no signed
+EO yet" repeatedly outweighed a principal who had publicly committed and
+faced no real cost to acting. So when the actor has publicly committed to
+the act and the only evidence for No is that it hasn't happened yet,
+start from the mid and shade toward No by at most 0.10. Shade further
+only for a dated fact that maps to No (the Exception above). If I believe
+more than 0.10 below the mid, the note must name that fact. This caps how
+far I move on absence, not what I honestly believe: my record in this
+shape says absence-driven distance from the mid is mostly miscalibration.
 
 **Re-open condition.** Rows skipped under this bar are graded as their own
 slice at each deep retro. When 10 have settled, lift the bar if their
