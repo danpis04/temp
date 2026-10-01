@@ -5103,6 +5103,24 @@ estimation errors the veto existed to catch (a clause misread on the
 pipeline, a single-leak rumor on OpenAI). The two No-side wins were thin
 fills at 0.86/0.88.
 
+**2026-10-01 10:0xZ update (FULL cycle, operator machine; 1
+`outside-view-veto` row settled, the North Korea September launch-day
+set; see RETRO-20261001-1008.)**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| NK exactly 2 tests Sep (`71aef6acf4eb`) | 0.47 / 0.32 | Yes | +0.140 | Yes | +10.15 |
+
+Outside-view-veto: **+$10.15** (1W/0L; the veto cost $10.15). Mechanical
+ledger now 190 rows / 182 trades / 8 refused / 76W-106L / +$121.32 /
+dBrier +0.0326 / held-out +$120.42 (was 189/181/8 refused/75W-106L/
++$111.17/+0.0337/+$110.27). Side split: no 133/125/57W-68L/+$91.97
+(unchanged); yes 57/57/19W-38L/+$29.35 (adds this row). Check: 91.97 +
+29.35 = 121.32.
+
+Ruling: no boundary change. This was a first-use Poisson count model, and
+all three sibling rows went its way on one quiet week. That is one event.
+
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
 The veto on judgment estimates with claimed edge > 0.10 stays. This fork
@@ -7291,6 +7309,11 @@ statement, and nobody in Riyadh had committed to one. Contrast 4769494,
 the unilateral EO, where absence was wrong five times. First grading of
 the process-shape-bar slice: 4 rows / 2 events / 2W-2L / −$2.97 /
 dBrier +0.0320. The re-open condition stays at 10 rows.
+RETRO-20261001-1008: a second bilateral case went the same way.
+Russia-Ukraine meeting by Sep 30 (`a0a3361a49c1`): own 0.08 vs mid 0.13,
+no meeting, dB −0.0105. The missing consent was Moscow's (the UAE round
+had no date). Slice now 6 rows / 4 events / 4W-2L / −$1.54 / dBrier
++0.0171. Both losses are the unilateral EO rows.
 
 **Re-open condition.** Rows skipped under this bar are graded as their own
 slice at each deep retro. When 10 have settled, lift the bar if their
