@@ -5045,6 +5045,35 @@ two rungs closest to the then-current level. Second confirmation
 (first: RETRO-20260924-2213) of the driftless-Gaussian-under-calls-a-
 selloff pattern; touch-family counter stays RETIRED (DEEP-2026-09-24).
 
+**2026-10-01 06:0xZ update (FULL cycle, operator machine; 4
+`outside-view-veto` rows and 1 `wide-spread-veto` row settled on the
+Sep-30 news cluster, all markets No; see RETRO-20261001-0608.)**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| Saudi pipeline restart (`a194b68a39cd`, superseded) | 0.85 / 0.67 | Yes | +0.170 | No | -5.00 |
+| AI lab Millennium No (`61e11058ff43`, superseded) | 0.98 / 0.855 | No | +0.120 | No | +0.81 |
+| OpenAI Millennium No (`de704a0f5b47`, superseded) | 0.99 / 0.875 | No | +0.110 | No | +0.68 |
+| OpenAI Millennium Yes (`1e6152a33dff`) | 0.22 / 0.115 | Yes | +0.100 | No | -5.00 |
+
+Outside-view-veto: **-$8.50** (2W/2L; veto saved $8.50 net). Mechanical
+ledger now 189 rows / 181 trades / 8 refused / 75W-106L / +$111.17 /
+dBrier +0.0337 / held-out +$110.27 (was 185/177/8 refused/73W-104L/
++$119.67/+0.0330/+$113.78). Side split: no 133 rows/125 trd/57W-68L/
++$91.97 (adds both Millennium wins); yes 56 rows/56 trd/18W-38L/+$19.20
+(adds the Saudi and OpenAI-Yes losses). Check: 91.97 + 19.20 = 111.17.
+
+Wide-spread-veto: Machado enters Venezuela (`53ea2024db78`) 0.12 / 0.225,
+No side at the 0.81 ask, settled No, **+$1.17** (veto cost $1.17). Line
+now 35 rows / 28 trd / 7 refused / 15W-13L / -$37.14 / dBrier +0.0164 /
+held-out -$34.28; side split no 22/17/8W-9L/-$30.02, yes 13/11/7W-4L/
+-$7.12. Check: -30.02 + -7.12 = -37.14.
+
+Ruling: no boundary change. The two Yes-side declines were
+estimation errors the veto existed to catch (a clause misread on the
+pipeline, a single-leak rumor on OpenAI). The two No-side wins were thin
+fills at 0.86/0.88.
+
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
 The veto on judgment estimates with claimed edge > 0.10 stays. This fork
@@ -7217,6 +7246,22 @@ When the cap binds, also write the uncapped read in the note as
 section, so each deep retro can score the cap against the view it
 replaced. Grade at n ≥ 5 capped rows. If the absence views beat the
 capped rows there, lift the cap.
+
+**RETRO-20261001-0608 sharpening: unilateral acts only.** The cap binds
+only when the committing actor can do the act alone (sign an EO, publish
+a rename). It does not bind when the act needs a party that has not
+committed: a bilateral meeting, a deal, or a qualifying announcement that
+only another body can make. In those cases the note must name the party
+whose consent is missing. Evidence: US-Iran meeting by Sep 30 (4867450).
+Trump told Axios on Sep 27 that he expected talks that week. My rows sat
+0.135 and 0.105 under the mid (`0c199d2ab189`, `fe010724f0f7`), no
+meeting happened, and the two rows' dBrier sums to −0.18. Iran had not
+committed, and the hard-liner backlash was dated. The Saudi pipeline
+(4487273) had the same shape: the rule needed a Saudi government
+statement, and nobody in Riyadh had committed to one. Contrast 4769494,
+the unilateral EO, where absence was wrong five times. First grading of
+the process-shape-bar slice: 4 rows / 2 events / 2W-2L / −$2.97 /
+dBrier +0.0320. The re-open condition stays at 10 rows.
 
 **Re-open condition.** Rows skipped under this bar are graded as their own
 slice at each deep retro. When 10 have settled, lift the bar if their
