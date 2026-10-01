@@ -3212,6 +3212,21 @@ forecast-only, but no research minutes go to touch rows. The open Sep
 monthly rows and the WTI ladder are scored as they settle, and they
 cannot re-open this ruling.
 
+**2026-10-01 05:15Z (RETRO-20261001-0515): Sep monthly rows scored;
+above-market recording rule.** 17 active Sep-monthly touch/bracket rows
+settled, all No. Below-market reads were closer than the mid on 12 of 12
+(dB −0.202), including 3 far-barrier DOGE/XRP rows. Above-market unshaded
+`touch.py` reads were closer on 0 of 5 (dB +0.401: BTC reach $87.5k/$90k,
+SOL reach $130, BTC dip $82.5k/$80k). On every one of those 5, the
+x0.75-vol reading that each note already logged was closer to the
+outcome. With DEEP-2026-09-28's 8, the market has now been closer on 11 of
+13 above-market rows. **Rule:** when `touch.py` at measured 30d vol sits
+ABOVE the mid, est_prob records the x0.75-vol reading, unless a
+row-specific measured short-window or implied input says otherwise (quote
+it). Below-market reads stay unshaded. This rule reverses the 09-21
+shade drop, but only on the above-market side, which is where the
+evidence is. It is a recording rule for forecast rows. Bets stay closed.
+
 Excluded per the sub-boundary taxonomy (DEEP-2026-08-15): Zambia
 (fa185b55a5c3, edge 0.06) and Musk wk 200-219 (7808b6f5a4ef, edge 0.045)
 both settled this tick too, but both carry claimed edges ≤0.10 under a
