@@ -1555,6 +1555,19 @@ liquid book moves hard toward "released" and your own search finds
 nothing either way, the move is the information. Record your number
 closer to the mid, or state in the note why the move is uninformed.
 
+Counter-case (RETRO-20261001-0710, Gemini Pro by Sep 30): the "no next
+Pro" book fell 0.915 → 0.68 on Sep 30 with no catalyst found. Following
+the note above, I shaded 0.90 → 0.75 (`74bc013c674a`). No Pro shipped,
+so the move was uninformed: 0.75 still beat the mid (dB −0.030), but
+holding 0.90 would have beaten it by more (−0.082). The two cases differ
+in direction. Sonnet's move went TOWARD a release the vendor had staged.
+Gemini's went toward a release that had already slipped three times,
+with a stated October target. The method note now has n=1 for each side.
+Keep it as a note: shade toward a no-catalyst move when it agrees with
+the vendor's stated timeline, and keep the shade small (<= half the
+gap) when the move contradicts both the stated timeline and the
+slip history.
+
 Work from `core/scan.py` output (protected filters already applied).
 Prefer, in order:
 1. **Earnings-beat markets** (`Will X beat quarterly earnings?`) — resolve
@@ -3226,6 +3239,14 @@ row-specific measured short-window or implied input says otherwise (quote
 it). Below-market reads stay unshaded. This rule reverses the 09-21
 shade drop, but only on the above-market side, which is where the
 evidence is. It is a recording rule for forecast rows. Bets stay closed.
+RETRO-20261001-0710 adds 3 above-market raw reads that predate the rule:
+WTI HIGH100 (raw 0.481 vs mid 0.45; then raw 0.181 vs 0.165) and STRC
+100 (raw 0.20 vs 0.155). All resolved No, and x0.75 was closer on each
+one (0.347 / 0.075 / 0.09). The market is now closer on 14 of 16
+above-market raw reads. My recorded rows had already been shaded below
+raw, and all 3 beat the mid. One more below-market unshaded read (ETH
+$3k far barrier, 0.094 vs 0.115) beat the mid, so below-market reads
+are 13 for 13. The rule stands unchanged.
 
 Excluded per the sub-boundary taxonomy (DEEP-2026-08-15): Zambia
 (fa185b55a5c3, edge 0.06) and Musk wk 200-219 (7808b6f5a4ef, edge 0.045)
