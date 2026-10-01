@@ -3247,6 +3247,14 @@ above-market raw reads. My recorded rows had already been shaded below
 raw, and all 3 beat the mid. One more below-market unshaded read (ETH
 $3k far barrier, 0.094 vs 0.115) beat the mid, so below-market reads
 are 13 for 13. The rule stands unchanged.
+RETRO-20261001-0810 adds the WTI Sept ladder, all No and all predating
+the rule. Above-market raw reads: LOW85 (0.268 vs 0.23), HIGH110 (0.205
+vs 0.20) and HIGH115 (0.069 vs 0.058). The market was closer on all 3, so
+the market is now closer on 17 of 19. The gaps are small, but the
+direction is the same every time. Below-market reads: LOW80 twice (0.049
+vs 0.08, then 0.128 vs 0.155). Both beat the mid, so below-market reads
+are 15 for 15. HIGH105 had raw = mid and is not counted. The rule stands
+unchanged.
 
 Excluded per the sub-boundary taxonomy (DEEP-2026-08-15): Zambia
 (fa185b55a5c3, edge 0.06) and Musk wk 200-219 (7808b6f5a4ef, edge 0.045)
