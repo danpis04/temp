@@ -1052,6 +1052,16 @@ won't fix it the way it does for e.g. earnings consensus. Prefer non-
 convective, stable-weather days for this category if revisited, or bracket
 widths ≥ the NWS's own stated intraday range.
 
+**Seattle station mapping PINNED (RETRO-20261001-1610, market 4028024,
+forecast 1eecb07f621d).** "Seattle City Area" in the NOWData resolution
+text is the Sand Point WFO thread (ACIS `KSEW`), NOT SeaTac (ACIS
+`SEAthr`, "Seattle Tacoma Area"). September 2026 totals: Sand Point 1.57in,
+SeaTac 1.46in. The 1.5-2in bracket resolved Yes, which only Sand Point
+satisfies. For every later Seattle precip or temperature market worded
+"Seattle City Area", read ACIS `KSEW` and drop the station-mapping discount
+(the 0.93 vs the mechanical 0.97 on this row was that discount). A market
+worded "Seattle-Tacoma" or citing SEA/SeaTac CLI still reads `SEAthr`.
+
 **Exploration budget, UFC main-card moneylines (2026-08-07 16:19Z, first test
 of this category).** Hypothesis: "UFC main-card moneylines have dense enough
 multi-book sportsbook coverage to devig, and PM either lags or tracks them
@@ -5120,6 +5130,37 @@ dBrier +0.0326 / held-out +$120.42 (was 189/181/8 refused/75W-106L/
 
 Ruling: no boundary change. This was a first-use Poisson count model, and
 all three sibling rows went its way on one quiet week. That is one event.
+
+**2026-10-01 16:1xZ update (FULL cycle, operator machine; 1
+`outside-view-veto` row and 1 `wide-spread-veto` row settled on the ISM
+Manufacturing PMI September event, print 54.5 vs consensus 54.8-55.0; see
+RETRO-20261001-1610.)**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| ISM Mfg Sep 54.0-54.9 (`c0b62297c4b7`) | 0.27 / 0.405 | No | +0.110 | Yes | -5.00 |
+
+Outside-view-veto: **-$5.00** (0W/1L; veto saved $5). Mechanical ledger
+(`core/counterfactual.py ledger --skip-reason outside-view-veto`) now 191
+rows / 183 trades / 8 refused / 76W-107L / +$116.32 / dBrier +0.0333 /
+held-out +$120.43 (was 190/182/8 refused/76W-106L/+$121.32/+0.0326/
++$120.42). Side split: no 134/126/57W-69L/+$86.97 (adds this row); yes
+57/57/19W-38L/+$29.35 (unchanged). Check: 86.97 + 29.35 = 116.32.
+
+Wide-spread-veto: ISM Mfg Sep 55.0-55.9 (`a8abe09e076b`) 0.30 / 0.40, No
+side at the 0.64 ask, settled No, **+$2.81** (veto cost $2.81). Line now
+36 rows / 29 trd / 7 refused / 16W-13L / -$34.33 / dBrier +0.0140 /
+held-out -$33.52; side split no 23/18/9W-9L/-$27.20, yes 13/11/7W-4L/
+-$7.12. Check: -27.20 + -7.12 = -34.32 (tool rounding, total -34.33).
+
+Ruling: no boundary change. One event, two adjacent brackets, both
+estimated off the same Kalshi ladder (>=54 0.83/0.94, >=55 0.60/0.63).
+The Kalshi-implied 0.27 on 54.0-54.9 lost to PM's 0.405 on the bracket
+that hit; my "PM ladder rich overall, sibling sum 1.24" read assumed the
+excess sat evenly, and it did not sit on the modal bracket. A
+cross-venue bracket read built from a wide Kalshi rung (0.11 spread on
+>=54) is no tighter than its widest rung; treat it as a range, not a
+point, before claiming a No-side gap.
 
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
