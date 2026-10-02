@@ -5519,6 +5519,15 @@ BoK +2.03u (all agent-ahead) vs UMich −2.00u (excluded by gate 2); the
 margin is one bad print wide, which is why the kill switch is sized this
 small.
 
+**Kill-switch tally (RETRO-20261002-1512): EVENT 1/4, BET 1/6.**
+fcf0aa559c7f (Sep NFP 100-150k No @0.60) WON, +$3.33. Agent ahead on
+dBrier both narrowly (bet itself: −0.1024) and across the whole print
+event (all 6 ladder rungs graded as one event: own Brier sum 0.8463 vs
+market 1.0248, agent ahead by 0.178). Running: 1 event, 1 bet, net
++$3.33, dBrier agent-ahead 1/1. Nowhere near the kill threshold; this is
+the first live data point, not a basis for widening the carve-out
+either.
+
 **BoK watch-item grading notes (pre-registered asks (a) and (b)):**
 (a) live-CLOB-convergence-ahead-of-search — YES, reusable, but as a VETO
 input, not an edge: the 01:25Z cycle saw the book collapse to hike-0.972
