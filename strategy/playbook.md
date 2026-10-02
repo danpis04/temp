@@ -5162,6 +5162,26 @@ cross-venue bracket read built from a wide Kalshi rung (0.11 spread on
 >=54) is no tighter than its widest rung; treat it as a range, not a
 point, before claiming a No-side gap.
 
+**2026-10-02 00:0xZ update (FULL cycle, operator machine; 1
+`wide-spread-veto` row settled on the WTI Oct 1 close ladder, >93 Yes;
+see RETRO-20261002-0007.)**
+
+Wide-spread-veto: WTI close > $93 Oct 1 (`95add8986f6a`, supersedes
+70693ea86f01) 0.45 / 0.3205, Yes side at the 0.52 ask, settled Yes,
+**+$4.62** (veto cost $4.62). Line (`core/counterfactual.py ledger
+--skip-reason wide-spread-veto`) now 38 rows / 30 trd / 8 refused /
+17W-13L / -$29.71 / dBrier -0.0117 / held-out -$28.91 (was 36/29/7
+refused/16W-13L/-$34.33/+0.0140/-$33.52; the tool also picks up refusal
+`b70555ab0e1d`, no ask at record time). Side split: no 23/18/9W-9L/
+-$27.20 (unchanged); yes 15/12/8W-4L/-$2.51 (adds this row). Check:
+-27.20 + -2.51 = -29.71.
+
+Ruling: no boundary change. A late spot read (92.87-92.96 against a
+$93 barrier) beat a stale 0.121/0.52 recorded book, which is the
+info-race shape, but the spread was ~0.40 and the fact (the settle print) was not yet
+final at record time, so the veto was correct by rule even though it
+cost money here.
+
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
 The veto on judgment estimates with claimed edge > 0.10 stays. This fork
