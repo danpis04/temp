@@ -3695,3 +3695,74 @@ f3 at −$51.66). 0 bets placed; 2 settled (RBA −$5.00, Canada GDP
 +$3.77); 3 open. No reverts. Two sharpens: the cross-venue rule's
 evidence claim is withdrawn and the procedure kept, and the absence-shade
 cap's scope is narrowed and made gradeable.
+
+## 2026-10-02 — deep-retro status pass
+
+Full detail in journal/retros/DEEP-2026-10-02.md. The window is 48h,
+because no deep retro was committed on 2026-10-01.
+
+Hourly-agent proposals this window: none new.
+
+- **Funnel-weld CI (PROPOSED, priority raised; 4th window, worst yet):**
+  7 of 16 FULLs wrote no funnel row: 09-30 14:25Z and 19:25Z, and 10-01
+  05:15Z, 06:14Z, 07:20Z, 16:17Z and 19:28Z. Several of those log lines
+  quote funnel numbers ("Funnel: screened=300, escalated=15") that never
+  reached funnel.jsonl. `strategy/tools/reconcile.py` FAILs now with 15
+  gaps. Only 3 ticks reported it (09-30 06:25Z and 09:35Z, and the 10-01
+  17:47Z triggered tick, which listed 17 gaps), and nobody acted on it.
+  Four deep retros of prose have not moved this. Asks unchanged: CI
+  fails a push whose cycles.log gains a `(FULL` line without a
+  funnel.jsonl line in the same commit, and CI surfaces a reconcile
+  FAIL.
+- **Pacing enforced outside the agent (NEW, PROPOSED):** the agent-owned
+  rules failed three ways in one window.
+  1. The stored `next_full_cycle_after` was left in the past ("left as
+     is") on six consecutive FULLs, 10-01 00:13Z to 07:20Z.
+  2. Three hops ran over the 3h cap.
+  3. Only 4 of 26 LIGHT ticks pasted `fullcount.py` output, and 4
+     counts were fabricated ("19", "16", "14 today", "18").
+
+  The mechanical cost: screener day batches reached 120/150 by 08:08Z,
+  which left the US afternoon unscreened. Ask: loop.sh (operator-owned)
+  runs `python3 strategy/tools/fullcount.py` and reads
+  `next_full_cycle_after`, then passes FULL or LIGHT into the prompt.
+  The agent stays free to set the time, but it no longer evaluates the
+  rule on itself. The deep retro added the re-SET rule to the schedule
+  notes in the meantime (agent-owned, no operator act).
+- **Missed deep retro (NEW, INFORMATIONAL):** no `deep-retro:` commit
+  between 2026-09-30 04:57Z and this one. The operator should check the
+  daily trigger. Watch-item archiving and edit audits slip a day when it
+  does not run.
+- **Orphaned ticks (INFORMATIONAL, ties to "screener quota refund"):**
+  three ticks died mid-cycle with no log line: 09-30 12:1xZ, 10-01
+  03:08Z and 10-01 08:08Z. The 08:08Z tick committed a retro and spent a
+  screener prepare. Three hours have no tick at all: 09-30 13Z, 10-01 04Z
+  and 09Z. Two orphan prepares charged 30 batches to the shared quota
+  with nothing screened. The refund-path ask carried since 09-15 now has
+  a measured cost.
+- **Cycle-log timestamps (no operator act; FYI):** 7 FULL lines are
+  stamped 11 to 23 minutes after the commit that contains them, for
+  example "10:35:00Z" inside beef450 at 10:12:59Z. The rule is now in the
+  notes. If the operator wants it mechanical, loop.sh could stamp the
+  line itself.
+- **Mech + Pearl Connect (ENDORSED, operator act, carried):** every FULL
+  and triggered tick still logs no mech tools. About 183h.
+- **Cloud runner (INFORMATIONAL, carried):** every commit in the window
+  is from the operator runner. About 130h since the last confirmed cloud
+  tick.
+- **3h pacing cap:** reopened from my side. There were 3 breaches (see
+  above), and the operator has still not ruled on whether to allow an
+  overnight exception.
+
+Carried unchanged: screener quota vs two runners, counterfactual.py
+per-fold dBrier column (gate 1 again not computed), real-twin
+allowed-classes, settled_ts determinism, wire-nonce 401, mech
+delivery-size, lease writability, watch.py shape regexes, subclass
+auto-tagger, Saudi-Yemen unsettled siblings.
+
+**Status:** relaxation fork NOT MET (16th consecutive; gate 2 fails with
+f3 at −$88.87). 0 bets placed in 48h; 1 settled (Core PCE No 3.3,
++$2.35); 2 open, both past end date. No reverts. Two sharpens: the
+above-market touch recording rule (counting unit, scope, a pre-registered
+October re-grade), and the truncated-transcript note, which was
+one-sided.

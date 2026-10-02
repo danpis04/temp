@@ -3265,6 +3265,33 @@ direction is the same every time. Below-market reads: LOW80 twice (0.049
 vs 0.08, then 0.128 vs 0.155). Both beat the mid, so below-market reads
 are 15 for 15. HIGH105 had raw = mid and is not counted. The rule stands
 unchanged.
+**DEEP-2026-10-02 audit: SHARPEN (counting unit, scope, a pre-registered
+re-grade).** The direction is plausible, but the tallies above overstate
+the evidence.
+- **Counting unit.** All 19 above-market rows and all 15 below-market
+  rows come from one September window, on BTC, ETH, SOL, DOGE, XRP and
+  WTI, and every one settled No. RETRO-20261001-0515 said so itself:
+  "roughly 4-5 independent decisions, not 17". The 0710 and 0810
+  increments then went back to counting rows. In a month where nothing
+  touched, any read below the mid beats it, whichever side of the mid it
+  started on. So "17/19 above" and "15/15 below" are one fact:
+  September was quiet. From now on, count in (asset, window) units. Sep
+  2026 is 6 units.
+- **Counter-regime.** The September Treasury touch rungs were
+  below-market driftless reads that lost in a trend: 30y 5.60%
+  `093929fcaa5d` (0.09 vs 0.206, Yes, dB +0.198) and 5y 5.07%
+  `62d76db86f20` (0.41 vs 0.625, Yes, dB +0.208). They were built with a
+  different tool (close-only Gaussian, not `touch.py`), so they do not
+  contradict this rule. They do show that the "below-market reads stay
+  unshaded" half has no support outside a month with no touches.
+- **Scope.** The rule covers `touch.py` rows on crypto and WTI only. It
+  does not extend to rates or equity touches.
+- **Gradeable.** Every above-market row's note keeps both
+  "raw: X / x0.75: Y". Pre-registered: the first deep retro after the
+  October monthly crypto and WTI touch rows settle grades raw against
+  x0.75 by summed Brier per (asset, window) unit. If raw wins on more
+  units than x0.75, drop the rule. Until then it stays a recording rule
+  for forecast rows. Bets stay closed.
 
 Excluded per the sub-boundary taxonomy (DEEP-2026-08-15): Zambia
 (fa185b55a5c3, edge 0.06) and Musk wk 200-219 (7808b6f5a4ef, edge 0.045)
@@ -5392,6 +5419,20 @@ both positive. Gate (3) holds (121 events). Gate (1) was not recomputed,
 for the same reason as 09-29. Overall dBrier rose (+0.0325 → +0.0342),
 which moves away from the bar.
 
+Status 2026-10-02 (DEEP, 48h window, since no 10-01 deep retro ran):
+**NOT MET, 16th consecutive. Gate 2 fails.** 11 outside-view-veto rows
+settled (Core PCE pair, Alibaba, NVIDIA, 30y dip 5.21, the Sep-30 news
+four, NK exactly-2, ISM 54.0-54.9). Tool output: 191 rows / 183 CF trades
+/ 131 events / 76W-107L / +$116.32 / dBrier +0.0333 / held-out +$120.43.
+Fold pnl [−4.10, +6.89, +127.69, −88.87, +74.72]: f3 is negative, so the
+two most recent folds are not both positive. Gate (3) holds (131
+events; `screen_replay.py events` was not re-run first). Gate (1) was
+not recomputed (inline script, needs approval). The window's +$43 CF is
+mostly one row, Alibaba `f41e0b09f084` (+$66.42), and its stated reason
+was a misread. Without it the window's veto rows net −$23, so the veto
+saved money on the rest. Overall dBrier +0.0333 is still behind the
+market.
+
 If the bar is ever MET: do not loosen the veto wholesale. Propose a
 NARROW carve-out for the best-evidenced sub-class only (current
 candidate shape: No-side timeline theses of the "nothing announced"
@@ -6125,8 +6166,15 @@ Oct 1) leaned No at 0.72 against a 0.805 mid partly because the
 factbase Gastonia and RNC Dallas fetches came back truncated with 0
 hits in the partial text. It settled Yes (own Brier 0.078 vs mid
 0.038). When a fetch is truncated, count that transcript as unknown:
-it adds nothing to the base-rate n, and it never pulls the estimate
-below the mid.
+it adds nothing to the base-rate n, in either direction.
+DEEP-2026-10-02 sharpen: the earlier wording, "it never pulls the
+estimate below the mid", was one-sided and anchored on the mid. A
+truncated text with a hit is still a full Yes analogue, because the hit
+is in the text you have. A truncated text with no hit is excluded, and
+it moves the estimate neither toward the mid nor away from it. If fewer
+than 2 complete transcripts remain, the row has no base rate in the
+utterance gate's sense. Say so in the note, and do not lean off the mid
+on the analogues alone.
 
 **Method note (2026-09-16): count only the named speaker's lines.**
 These markets resolve on what the SPEAKER says ("if Warsh says the
