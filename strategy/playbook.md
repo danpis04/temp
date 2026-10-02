@@ -7622,3 +7622,17 @@ step counts toward today's sample-of-3 tally.
   0.30 vs mkt 0.41, WON; 12069f6c5a3c <20 est 0.15 vs 0.13, LOST) had
   both rows behind the market because the shade stopped halfway. Stays
   forecast-only until ≥3 weekly events have settled.
+
+## Spotify first-week-streams brackets: resolution source (RETRO-20261002-1810, first instance)
+
+- **"Spotify official charts" means the kworb chart-cumulative number,
+  not the track-play counter.** Patient Zero's kworb songs-page track
+  counter ran ~1.10x the chart-cumulative sum in the same window (40.46M
+  vs 42.48M through Sep 30); the two readings disagreed on whether the
+  50m-first-week bracket would hit (counter projected Yes, chart
+  projected No). The 50m bracket (26a8df690320, est 0.08 on the chart
+  reading) settled **No**, confirming the chart-cumulative reading is
+  the one the resolver uses. Use kworb's daily chart sums, not the
+  track-page counter, for any future "Spotify official charts"
+  first-week-streams market. n=1 — forecast-only until more of this
+  shape settles.
