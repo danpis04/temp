@@ -5241,6 +5241,27 @@ Ruling: no boundary change. An empty ask side cannot be traded at any
 estimate. The 0.99 read was right, which is the brier gain the retro
 recorded, but no veto relaxation could have captured it.
 
+**2026-10-02 23:09Z update (LIGHT tick, operator machine; 1
+`wide-spread-veto` row settled 2026-10-02T23:03:17Z on the Gold HIGH
+$4,300 weekly touch, see RETRO-20261002-2309.)**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| Gold HIGH $4,300 week of Sep 28 (`356322ab7185`, refusal: entry 0.988 outside [0.02, 0.95] fill range) | 0.01 / 0.0595 | No | +0.002 | No | 0.00 (refused) |
+
+Wide-spread-veto: refusal, so no trade. The mechanical line
+(`core/counterfactual.py ledger --skip-reason wide-spread-veto`) now has 41
+rows / 31 trd / 10 refused / 18W-13L / -$29.27 / dBrier -0.0118 / held-out
+-$28.45 (unchanged pnl/W-L from the NFLX update; this row adds only to the
+refused count and nudges dBrier -0.0120 -> -0.0118). Side split: no
+25/19/10W-9L/-$26.76; yes 16/12/8W-4L/-$2.51. Check: -26.76 + -2.51 =
+-29.27.
+
+Ruling: no boundary change. A quoted entry outside the executable fill
+range cannot be traded regardless of estimate quality; own 0.01 was
+directionally and numerically much sharper than the 0.0595 mid, but
+nothing tradeable could have captured it.
+
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
 The veto on judgment estimates with claimed edge > 0.10 stays. This fork
