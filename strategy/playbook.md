@@ -6119,6 +6119,15 @@ transcript (rally speeches especially — official Fed transcripts are
 cleaned and don't show this), sweep constituent words in addition to
 the exact n-gram before concluding a term is absent.
 
+**Method note (2026-10-02): a truncated transcript is missing data,
+not a zero.** Forecast b3881c58568f (Trump "Reagan", Oklahoma rally
+Oct 1) leaned No at 0.72 against a 0.805 mid partly because the
+factbase Gastonia and RNC Dallas fetches came back truncated with 0
+hits in the partial text. It settled Yes (own Brier 0.078 vs mid
+0.038). When a fetch is truncated, count that transcript as unknown:
+it adds nothing to the base-rate n, and it never pulls the estimate
+below the mid.
+
 **Method note (2026-09-16): count only the named speaker's lines.**
 These markets resolve on what the SPEAKER says ("if Warsh says the
 listed term"), and press-conference transcripts interleave reporter
