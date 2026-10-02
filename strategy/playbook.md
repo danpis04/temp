@@ -3104,6 +3104,17 @@ measured print (SPY LOW $760 `23a99c8fe4e8`, ES overnight + RTH-only
 window, 0.118 -> 0.08) helped by 0.0075. equity-touch now n=2, dBrier
 +0.163: forecast-only, no bets.
 
+**2026-10-02 14:09Z update (RETRO-20261002-1409):** equity-touch now n=5
+settled (STRC HIGH100, PLTR HIGH195, OPEN HIGH2.50, EWY HIGH189 under
+skip-reason `unvalidated-method`, plus META LOW750 `market-agrees`).
+Excluding the PLTR row above (already a named rule violation, dBrier
++0.293), the other 3 `unvalidated-method` rows run own Brier 0.468 vs
+market 0.528 — own *ahead* by 0.060, the opposite sign from the
+crypto/WTI above-market-overstatement pattern (DEEP-2026-10-02 scoped
+that rule to crypto/WTI only, excluding equity touches, for exactly this
+reason: the families don't share a signature). n=3 informative rows is
+not enough to act on. Forecast-only stance unchanged; revisit at n>=8.
+
 **2026-09-21 20:44Z update (RETRO-20260921-2044; far-barrier split added):**
 `8d1eb46b7c32` (ETH reach $2,800, own 0.25 vs mid 0.155) settled WON, dBrier
 -0.1515. Listed, NOT counted: its note sweeps sigma 50-90%, no measured
