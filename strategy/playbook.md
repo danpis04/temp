@@ -5220,6 +5220,27 @@ info-race shape, but the spread was ~0.40 and the fact (the settle print) was no
 final at record time, so the veto was correct by rule even though it
 cost money here.
 
+**2026-10-02 22:1xZ update (FULL cycle, operator machine; 1
+`wide-spread-veto` row settled 2026-10-02T20:16:45Z on the NFLX weekly
+strike, graded narratively in RETRO-20261002-2106 (commit 5b6db17) but not
+table-entered; `reconcile.py` check 5 flagged it this cycle.)**
+
+| Row | est vs mkt | Side | Realizable edge | Result | CF P&L |
+|---|---|---|---|---|---|
+| NFLX week of Sep 28 above $30 (`9d832947a8a1`, refusal: no Yes ask at record time, liq 26) | 0.99 / 0.823 | Yes | - (no ask) | Yes | 0.00 (refused) |
+
+Wide-spread-veto: refusal, so no trade. The mechanical line
+(`core/counterfactual.py ledger --skip-reason wide-spread-veto`) now has 40
+rows / 31 trd / 9 refused / 18W-13L / -$29.27 / dBrier -0.0120 / held-out
+-$28.47. Side split: no 24/19/10W-9L/-$26.76; yes 16/12/8W-4L/-$2.51.
+Check: -26.76 + -2.51 = -29.27. The no side moved from -$27.20 at the
+00:0xZ update to -$26.76 because of a row settled in between, not because
+of this one.
+
+Ruling: no boundary change. An empty ask side cannot be traded at any
+estimate. The 0.99 read was right, which is the brier gain the retro
+recorded, but no veto relaxation could have captured it.
+
 ## Outside-view-veto relaxation fork (pre-registered, DEEP-2026-09-08, per operator note 2026-09-07 ~20:50Z)
 
 The veto on judgment estimates with claimed edge > 0.10 stays. This fork
